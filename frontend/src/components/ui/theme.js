@@ -7,6 +7,7 @@ const lightRed = "#FF847C"
 const red = "#E84A5F"
 const offBlack = "#2A363B"
 const grey = "#747474"
+const white = "#FFF"
 
 const theme = createTheme({
   palette: {
@@ -35,6 +36,7 @@ const theme = createTheme({
       fontFamily: "Montserrat",
       fontSize: "3rem",
       fontWeight: 500,
+      color: white,
     },
     h3: {
       fontFamily: "Montserrat",
@@ -47,12 +49,14 @@ const theme = createTheme({
       fontFamily: "italic",
       fontWeight: 700,
       fontSize: "3rem",
+      color: white,
     },
     h5: {
       fontFamily: "Philosopher",
       fontSize: "2rem",
       fontWeight: 700,
       fontStyle: "italic",
+      color: white,
     },
     body1: {
       fontFamily: "Montserrat",
