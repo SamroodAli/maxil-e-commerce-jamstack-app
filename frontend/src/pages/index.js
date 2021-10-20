@@ -1,7 +1,13 @@
-import React from "react"
+import * as React from "react"
 
-const App = () => {
-  return <h1>This is going to be a new beginning. Very ambitious Var App</h1>
-}
+import Layout from "../components/ui/layout"
 
-export default App
+const IndexPage = () => (
+  <Layout>
+    <h1>Hi Udemy</h1>
+    <p>Welcome to your new Gatsby site.</p>
+    <p>Now go build something great.</p>
+  </Layout>
+)
+
+export default IndexPage
