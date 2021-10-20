@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
+import search from "../../images/search.svg"
+import cart from "../../images/cart.svg"
+import account from "../../images/account.svg"
 
 const Header = () => {
   return (
