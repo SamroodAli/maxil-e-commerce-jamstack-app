@@ -46,7 +46,7 @@ const theme = createTheme({
     },
     h4: {
       fontFamily: "Philosopher",
-      fontFamily: "italic",
+      fontStyle: "italic",
       fontWeight: 700,
       fontSize: "3rem",
       color: white,
