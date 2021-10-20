@@ -13,6 +13,12 @@ const Header = () => {
         <Button>
           <Typography variant="h1">VAR X</Typography>
         </Button>
+        <Tabs>
+          <Tab label="Hats" />
+          <Tab label="Hoodies" />
+          <Tab label="Shirts" />
+          <Tab label="Contact Us" />
+        </Tabs>
       </Toolbar>
     </AppBar>
   )
