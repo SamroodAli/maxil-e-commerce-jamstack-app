@@ -17,7 +17,7 @@ const Header = () => {
         <Button>
           <Typography variant="h1">VAR X</Typography>
         </Button>
-        <Tabs>
+        <Tabs value={0}>
           <Tab label="Hats" />
           <Tab label="Hoodies" />
           <Tab label="Shirts" />
