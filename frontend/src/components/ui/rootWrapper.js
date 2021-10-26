@@ -1,5 +1,5 @@
 import React from "react"
-import { ThemeProvider } from "@mui/material/styles"
+import { ThemeProvider } from "@material-ui/core/styles"
 import theme from "./theme"
 
 const RootWrapper = ({ element }) => {

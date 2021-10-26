@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles"
+import { createTheme } from "@material-ui/core/styles"
 
 const green = "#99B898"
 const darkGreen = "#708670"
@@ -10,6 +10,15 @@ const grey = "#747474"
 const white = "#FFF"
 
 const theme = createTheme({
+  components: {
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          backgroundColor: red,
+        },
+      },
+    },
+  },
   palette: {
     primary: {
       main: green,

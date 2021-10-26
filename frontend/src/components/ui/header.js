@@ -1,40 +1,25 @@
 import React from "react"
-import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
-import Tabs from "@mui/material/Tabs"
-import Tab from "@mui/material/Tab"
-import IconButton from "@mui/material/IconButton"
-import search from "../../images/search.svg"
-import cart from "../../images/cart.svg"
-import account from "../../images/account-header.svg"
+import AppBar from "@material-ui/core/AppBar"
+import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
+import Tabs from "@material-ui/core/Tabs"
+import Tab from "@material-ui/core/Tab"
+import Toolbar from "@material-ui/core/Toolbar"
 
-const Header = () => {
+export default function Header() {
   return (
     <AppBar color="transparent" elevation={0}>
       <Toolbar>
         <Button>
           <Typography variant="h1">VAR X</Typography>
         </Button>
-        <Tabs value={0}>
+        <Tabs>
           <Tab label="Hats" />
           <Tab label="Hoodies" />
           <Tab label="Shirts" />
           <Tab label="Contact Us" />
         </Tabs>
-        <IconButton>
-          <img src={search} alt="search" />
-        </IconButton>
-        <IconButton>
-          <img src={cart} alt="cart" />
-        </IconButton>
-        <IconButton>
-          <img src={account} alt="account" />
-        </IconButton>
       </Toolbar>
     </AppBar>
   )
 }
-
-export default Header
