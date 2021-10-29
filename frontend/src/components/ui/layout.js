@@ -1,12 +1,26 @@
 import * as React from "react"
-// import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 
 const Layout = ({ children }) => {
+  // make a static query using graphql in gatsby
+  const data = useStaticQuery(graphql`
+    query GetCategories {
+      allStrapiCategories {
+        edges {
+          node {
+            name
+            strapiId
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <>
-      <Header />
+      <Header categories={data.allStrapiCategories.edges} />
       <div
         style={{
           margin: `0 auto`,
