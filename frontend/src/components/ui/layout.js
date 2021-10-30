@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 
 const Layout = ({ children }) => {
-  // make a static query using graphql in gatsby
   const data = useStaticQuery(graphql`
     query GetCategories {
       allStrapiCategories {
