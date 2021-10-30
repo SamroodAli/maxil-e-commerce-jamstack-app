@@ -72,13 +72,10 @@ const Header = ({ categories }) => {
 
   const activeIndex = () => {
     const found = routes.indexOf(
-      routes.filter(({ node }) => {
-        if (node.link) {
-          console.log(`/${node.link}`)
-          return node.link === window.location.pathname
-        }
-        return `/${node.name.toLowerCase()}` === window.location.pathname
-      })[0]
+      routes.filter(
+        ({ node: { link, name } }) =>
+          (link || `/${name.toLowerCase()}`) === window.location.pathname
+      )[0]
     )
     return found === -1 ? false : found
   }
@@ -125,6 +122,7 @@ const Header = ({ categories }) => {
         </Button>
         {matchesMD ? (
           <Drawer
+            activeIndex={activeIndex()}
             routes={routes}
             drawerOpen={drawerOpen}
             setDrawerOpen={setDrawerOpen}

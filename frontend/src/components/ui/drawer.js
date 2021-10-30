@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Drawer = ({ routes, drawerOpen, setDrawerOpen }) => {
+const Drawer = ({ routes, drawerOpen, setDrawerOpen, activeIndex }) => {
   const classes = useStyles()
 
   return (
@@ -28,9 +28,10 @@ const Drawer = ({ routes, drawerOpen, setDrawerOpen }) => {
       classes={{ paper: classes.drawer }}
     >
       <List disablePadding>
-        {routes.map(({ node }) => (
+        {routes.map(({ node }, i) => (
           <ListItem
             button
+            selected={activeIndex === i}
             key={node.strapiId}
             component={Link}
             to={node.link || `/${node.name.toLowerCase()}`}
@@ -50,6 +51,8 @@ Drawer.propTypes = {
   routes: PropTypes.array.isRequired,
   drawerOpen: PropTypes.bool.isRequired,
   setDrawerOpen: PropTypes.func.isRequired,
+  activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.bool])
+    .isRequired,
 }
 
 export default Drawer
