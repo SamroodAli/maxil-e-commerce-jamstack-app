@@ -17,6 +17,7 @@ import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
 import menu from "../../images/menu.svg"
+import { Link, navigate } from "gatsby"
 
 const useStyles = makeStyles(theme => {
   return {
@@ -79,6 +80,34 @@ export default function Header({ categories }) {
     </SwipeableDrawer>
   )
 
+  const actions = [
+    {
+      icon: search,
+      alt: "search",
+      visible: true,
+    },
+    {
+      icon: cart,
+      alt: "cart",
+      visible: true,
+      link: "/cart",
+      onClick: () => navigate("/cart"),
+    },
+    {
+      icon: account,
+      alt: "account",
+      visible: !matchesMD,
+      link: "/account",
+      onClick: () => navigate("/account"),
+    },
+    {
+      icon: menu,
+      alt: "menu",
+      visible: matchesMD,
+      onClick: () => setDrawerOpen(true),
+    },
+  ]
+
   return (
     <AppBar color="transparent" elevation={0}>
       <Toolbar>
@@ -88,19 +117,19 @@ export default function Header({ categories }) {
           </Typography>
         </Button>
         {matchesMD ? drawer : tabs}
-        <IconButton>
-          <img className={classes.icon} src={search} alt="search" />
-        </IconButton>
-        <IconButton>
-          <img className={classes.icon} src={cart} alt="cart" />
-        </IconButton>
-        <IconButton onClick={() => (matchesMD ? setDrawerOpen(true) : null)}>
-          <img
-            className={classes.icon}
-            src={matchesMD ? menu : account}
-            alt="account"
-          />
-        </IconButton>
+        {actions.map(action => {
+          if (action.visible) {
+            return (
+              <IconButton key={action.alt} onClick={action.onClick}>
+                <img
+                  className={classes.icon}
+                  src={action.icon}
+                  alt={action.alt}
+                />
+              </IconButton>
+            )
+          }
+        })}
       </Toolbar>
     </AppBar>
   )
