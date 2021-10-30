@@ -117,7 +117,7 @@ const Header = ({ categories }) => {
           classes={{ root: classes.logoContainer }}
         >
           <Typography variant="h1" classes={{ root: classes.logo }}>
-            <span className={classes.logoText}>MAX</span> IL
+            <span className={classes.logoText}>MAX</span>IL
           </Typography>
         </Button>
         {matchesMD ? (

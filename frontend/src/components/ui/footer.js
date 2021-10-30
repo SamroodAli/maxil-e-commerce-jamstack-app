@@ -9,9 +9,18 @@ import instagram from "../../images/instagram.svg"
 const useStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
+    padding: "2rem",
   },
   linkColumn: {
     width: "20rem",
+  },
+  link: {
+    color: theme.palette.common.white,
+    fontSize: "1.25rem",
+  },
+  spacer: {
+    marginTop: "2rem",
+    marginBottom: "2rem",
   },
   "@global": {
     body: {
@@ -38,10 +47,14 @@ const Footer = () => {
                 <Typography variant="h5">Contact Us</Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body1">(555) 555-5555</Typography>
+                <Typography variant="body1" classes={{ body1: classes.link }}>
+                  (555) 555-5555
+                </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body1">samrood.kl@gmail.com</Typography>
+                <Typography variant="body1" classes={{ body1: classes.link }}>
+                  samrood.kl@gmail.com
+                </Typography>
               </Grid>
             </Grid>
             <Grid
@@ -54,10 +67,14 @@ const Footer = () => {
                 <Typography variant="h5">Customer service</Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body1">Contact us</Typography>
+                <Typography variant="body1" classes={{ body1: classes.link }}>
+                  Contact us
+                </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body1">samrood.kl@gmail.com</Typography>
+                <Typography variant="body1" classes={{ body1: classes.link }}>
+                  samrood.kl@gmail.com
+                </Typography>
               </Grid>
             </Grid>
             <Grid
@@ -70,20 +87,24 @@ const Footer = () => {
                 <Typography variant="h5">Information</Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body1">Privacy policy</Typography>
+                <Typography variant="body1" classes={{ body1: classes.link }}>
+                  Privacy policy
+                </Typography>
               </Grid>
               <Grid item>
-                <Typography variant="body1">Terms and conditions</Typography>
+                <Typography variant="body1" classes={{ body1: classes.link }}>
+                  Terms and conditions
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
         <Grid item>
-          <Grid item container direction="column">
+          <Grid item container direction="column" alignItems="center">
             <Grid item>
               <img src={facebook} alt="Facebook" />
             </Grid>
-            <Grid item>
+            <Grid item classes={{ root: classes.spacer }}>
               <img src={twitter} alt="twitter" />
             </Grid>
             <Grid item>

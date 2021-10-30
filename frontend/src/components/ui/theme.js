@@ -1,30 +1,20 @@
-import { createTheme } from "@material-ui/core/styles"
+import { createMuiTheme } from "@material-ui/core/styles"
 
-const primary = "#99B898"
-const secondary = "#708670"
+const green = "#99B898"
+const darkGreen = "#708670"
 const tan = "#FECEA8"
 const lightRed = "#FF847C"
 const red = "#E84A5F"
 const offBlack = "#2A363B"
 const grey = "#747474"
-const white = "#FFF"
 
-const theme = createTheme({
-  components: {
-    MuiTabs: {
-      styleOverrides: {
-        indicator: {
-          backgroundColor: red,
-        },
-      },
-    },
-  },
+const theme = createMuiTheme({
   palette: {
     primary: {
-      main: primary,
+      main: green,
     },
     secondary: {
-      main: secondary,
+      main: darkGreen,
     },
     common: {
       tan,
@@ -39,38 +29,43 @@ const theme = createTheme({
       fontFamily: "Philosopher",
       fontStyle: "italic",
       fontWeight: 700,
-      color: primary,
+      color: green,
     },
     h2: {
       fontFamily: "Montserrat",
       fontSize: "3rem",
       fontWeight: 500,
-      color: white,
+      color: "#fff",
     },
     h3: {
       fontFamily: "Montserrat",
       fontSize: "2rem",
       fontWeight: 300,
-      color: primary,
+      color: green,
     },
     h4: {
       fontFamily: "Philosopher",
       fontStyle: "italic",
       fontWeight: 700,
       fontSize: "3rem",
-      color: white,
+      color: "#fff",
     },
     h5: {
       fontFamily: "Philosopher",
       fontSize: "2rem",
       fontWeight: 700,
       fontStyle: "italic",
-      color: white,
+      color: "#fff",
     },
     body1: {
       fontFamily: "Montserrat",
       fontSize: "1.5rem",
       color: grey,
+    },
+    body2: {
+      fontFamily: "Montserrat",
+      fontSize: "1.5rem",
+      color: "#fff",
     },
   },
   overrides: {},
