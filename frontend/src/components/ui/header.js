@@ -11,6 +11,13 @@ import cart from "../../images/cart.svg"
 import account from "../../images/account-header.svg"
 import IconButton from "@material-ui/core/IconButton"
 import { makeStyles } from "@material-ui/core/styles"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+import Hidden from "@material-ui/core/Hidden"
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemText from "@material-ui/core/ListItemText"
+import menu from "../../images/menu.svg"
 
 const useStyles = makeStyles(theme => {
   return {
@@ -34,11 +41,23 @@ const useStyles = makeStyles(theme => {
 
 export default function Header({ categories }) {
   const classes = useStyles()
+  const matchesMD = useMediaQuery(theme => theme.breakpoints.down("md"))
 
   const routes = [
     ...categories,
     { node: { name: "Contact Us", strapiId: "contact" } },
   ]
+
+  const tabs = (
+    <Tabs
+      value={0}
+      classes={{ indicator: classes.coloredIndicator, root: classes.tabs }}
+    >
+      {routes.map(({ node }) => (
+        <Tab key={node.strapiId} label={node.name} />
+      ))}
+    </Tabs>
+  )
 
   return (
     <AppBar color="transparent" elevation={0}>
@@ -48,23 +67,18 @@ export default function Header({ categories }) {
             <span className={classes.logoText}>VAR</span> X
           </Typography>
         </Button>
-        <Tabs
-          value={0}
-          classes={{ indicator: classes.coloredIndicator, root: classes.tabs }}
-        >
-          {routes.map(({ node }) => (
-            <Tab key={node.strapiId} label={node.name} />
-          ))}
-        </Tabs>
+        {matchesMD ? null : tabs}
         <IconButton>
           <img src={search} alt="search" />
         </IconButton>
         <IconButton>
           <img src={cart} alt="cart" />
         </IconButton>
-        <IconButton>
-          <img src={account} alt="account" />
-        </IconButton>
+        <Hidden mdDown>
+          <IconButton>
+            <img src={account} alt="account" />
+          </IconButton>
+        </Hidden>
       </Toolbar>
     </AppBar>
   )
