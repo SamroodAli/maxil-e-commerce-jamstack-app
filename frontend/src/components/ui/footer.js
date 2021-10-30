@@ -9,7 +9,10 @@ import instagram from "../../images/instagram.svg"
 const useStyles = makeStyles(theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
-    padding: "2rem",
+    [theme.breakpoints.up("sm")]: {
+      padding: "2rem",
+    },
+    padding: "1rem",
   },
   linkColumn: {
     width: "20rem",
@@ -17,6 +20,9 @@ const useStyles = makeStyles(theme => ({
   link: {
     color: theme.palette.common.white,
     fontSize: "1.25rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem",
+    },
   },
   spacer: {
     marginTop: "2rem",
