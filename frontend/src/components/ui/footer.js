@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   link: {
     color: theme.palette.common.white,
     fontSize: "1.25rem",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1.1rem",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "1rem",
     },
@@ -30,6 +33,12 @@ const useStyles = makeStyles(theme => ({
   linkContainer: {
     [theme.breakpoints.down("md")]: {
       marginBottom: "3rem",
+    },
+  },
+  footerLinkHeader: {
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "0.5rem",
+      marginTop: "0.5rem",
     },
   },
   spacer: {
@@ -45,12 +54,15 @@ const useStyles = makeStyles(theme => ({
     body: {
       margin: 0,
     },
+    a: {
+      textDecoration: "none",
+    },
   },
 }))
 
 const Footer = () => {
   const classes = useStyles()
-  const matchesSM = useMediaQuery(theme => theme.breakpoints.down("sm"))
+  const matchesMD = useMediaQuery("(max-width:1087px)")
 
   const socialMedia = [
     { icon: facebook, alt: "facebook", link: "https://facebook.com" },
@@ -81,21 +93,31 @@ const Footer = () => {
 
   return (
     <footer className={classes.footer}>
-      <Grid container justifyContent="space-between">
+      <Grid
+        container
+        justifyContent="space-between"
+        direction={matchesMD ? "column" : "row"}
+      >
         <Grid item classes={{ root: classes.linkContainer }}>
           <Grid item container>
             {Object.entries(routes).map(([category, routes]) => (
               <Grid
+                key={category}
                 item
                 container
                 direction="column"
                 classes={{ root: classes.linkColumn }}
               >
                 <Grid item>
-                  <Typography variant="h5">{category}</Typography>
+                  <Typography
+                    variant="h5"
+                    classes={{ root: classes.footerLinkHeader }}
+                  >
+                    {category}
+                  </Typography>
                 </Grid>
                 {routes.map(({ label, link, href }) => (
-                  <Grid item>
+                  <Grid item key={label}>
                     <Typography
                       variant="body1"
                       className={classes.link}
@@ -113,10 +135,9 @@ const Footer = () => {
         </Grid>
         <Grid item>
           <Grid
-            item
             container
-            direction={matchesSM ? "row" : "column"}
-            alignItems="center"
+            justifyContent="center"
+            direction={matchesMD ? "row" : "column"}
           >
             {socialMedia.map(({ icon, alt, link }) => (
               <Grid item key={alt}>
