@@ -1,7 +1,7 @@
 import { createTheme } from "@material-ui/core/styles"
 
-const green = "#99B898"
-const darkGreen = "#708670"
+const primary = "#99B898"
+const secondary = "#708670"
 const tan = "#FECEA8"
 const lightRed = "#FF847C"
 const red = "#E84A5F"
@@ -21,10 +21,10 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: green,
+      main: primary,
     },
     secondary: {
-      main: darkGreen,
+      main: secondary,
     },
     common: {
       tan,
@@ -39,7 +39,7 @@ const theme = createTheme({
       fontFamily: "Philosopher",
       fontStyle: "italic",
       fontWeight: 700,
-      color: green,
+      color: primary,
     },
     h2: {
       fontFamily: "Montserrat",
@@ -51,7 +51,7 @@ const theme = createTheme({
       fontFamily: "Montserrat",
       fontSize: "2rem",
       fontWeight: 300,
-      color: green,
+      color: primary,
     },
     h4: {
       fontFamily: "Philosopher",

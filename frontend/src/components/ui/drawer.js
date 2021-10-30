@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import PropTypes from "prop-types"
