@@ -35,6 +35,16 @@ const useStyles = makeStyles(theme => {
       height: "3rem",
       width: "3rem",
     },
+    drawer: {
+      backgroundColor: theme.palette.primary.main,
+    },
+    listItemText: {
+      color: theme.palette.common.white,
+    },
+    tab: {
+      ...theme.typography.body1,
+      fontWeight: 600,
+    },
     // "@global": {
     //   ".MuiTypography-h1": {
     //     fontSize: "30rem",
@@ -50,7 +60,7 @@ export default function Header({ categories }) {
 
   const routes = [
     ...categories,
-    { node: { name: "Contact Us", strapiId: "contact" } },
+    { node: { name: "Contact Us", strapiId: "contact", link: "/contact" } },
   ]
 
   const tabs = (
@@ -59,7 +69,13 @@ export default function Header({ categories }) {
       classes={{ indicator: classes.coloredIndicator, root: classes.tabs }}
     >
       {routes.map(({ node }) => (
-        <Tab key={node.strapiId} label={node.name} />
+        <Tab
+          component={Link}
+          to={node.link || `/${node.name.toLowerCase()}`}
+          classes={{ root: classes.tab }}
+          key={node.strapiId}
+          label={node.name}
+        />
       ))}
     </Tabs>
   )
@@ -69,11 +85,15 @@ export default function Header({ categories }) {
       open={drawerOpen}
       onOpen={() => setDrawerOpen(true)}
       onClose={() => setDrawerOpen(false)}
+      classes={{ paper: classes.drawer }}
     >
       <List>
         {routes.map(({ node }) => (
           <ListItem button key={node.strapiId}>
-            <ListItemText primary={node.name} />
+            <ListItemText
+              classes={{ primary: classes.listItemText }}
+              primary={node.name}
+            />
           </ListItem>
         ))}
       </List>
