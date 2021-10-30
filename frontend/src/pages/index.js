@@ -1,9 +1,10 @@
 import * as React from "react"
 import Layout from "../components/ui/layout"
+import HeroBlock from "../components/home/heroBlock"
 
 const IndexPage = () => (
   <Layout>
-    <p>Index page</p>
+    <HeroBlock />
   </Layout>
 )
 
