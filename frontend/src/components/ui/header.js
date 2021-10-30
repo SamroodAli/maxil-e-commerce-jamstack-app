@@ -89,7 +89,12 @@ export default function Header({ categories }) {
     >
       <List>
         {routes.map(({ node }) => (
-          <ListItem button key={node.strapiId}>
+          <ListItem
+            button
+            key={node.strapiId}
+            component={Link}
+            to={node.link || `/${node.name.toLowerCase()}`}
+          >
             <ListItemText
               classes={{ primary: classes.listItemText }}
               primary={node.name}
