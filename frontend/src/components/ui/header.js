@@ -24,8 +24,18 @@ const useStyles = makeStyles(theme => {
     coloredIndicator: {
       backgroundColor: "#fff",
     },
+    logo: {
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "2rem",
+      },
+    },
     logoText: {
       color: theme.palette.common.offBlack,
+    },
+    logoContainer: {
+      [theme.breakpoints.down("md")]: {
+        marginRight: "auto",
+      },
     },
     tabs: {
       marginLeft: "auto",
@@ -34,6 +44,16 @@ const useStyles = makeStyles(theme => {
     icon: {
       height: "3rem",
       width: "3rem",
+      [theme.breakpoints.down("xs")]: {
+        height: "2rem",
+        width: "2rem",
+        padding: "0.1rem",
+      },
+    },
+    iconButton: {
+      [theme.breakpoints.down("xs")]: {
+        padding: "0.25rem",
+      },
     },
     drawer: {
       backgroundColor: theme.palette.primary.main,
@@ -45,6 +65,7 @@ const useStyles = makeStyles(theme => {
       ...theme.typography.body1,
       fontWeight: 600,
     },
+
     // "@global": {
     //   ".MuiTypography-h1": {
     //     fontSize: "30rem",
@@ -87,7 +108,7 @@ export default function Header({ categories }) {
       onClose={() => setDrawerOpen(false)}
       classes={{ paper: classes.drawer }}
     >
-      <List>
+      <List disablePadding>
         {routes.map(({ node }) => (
           <ListItem
             button
@@ -135,26 +156,32 @@ export default function Header({ categories }) {
 
   return (
     <AppBar color="transparent" elevation={0}>
-      <Toolbar>
-        <Button>
-          <Typography variant="h1">
+      <Toolbar disableGutters={matchesMD}>
+        <Button
+          component={Link}
+          to="/"
+          classes={{ root: classes.logoContainer }}
+        >
+          <Typography variant="h1" classes={{ root: classes.logo }}>
             <span className={classes.logoText}>VAR</span> X
           </Typography>
         </Button>
         {matchesMD ? drawer : tabs}
-        {actions.map(action => {
-          if (action.visible) {
-            return (
-              <IconButton key={action.alt} onClick={action.onClick}>
-                <img
-                  className={classes.icon}
-                  src={action.icon}
-                  alt={action.alt}
-                />
-              </IconButton>
-            )
-          }
-        })}
+        {actions.map(action =>
+          action.visible ? (
+            <IconButton
+              classes={{ root: classes.iconButton }}
+              key={action.alt}
+              onClick={action.onClick}
+            >
+              <img
+                className={classes.icon}
+                src={action.icon}
+                alt={action.alt}
+              />
+            </IconButton>
+          ) : null
+        )}
       </Toolbar>
     </AppBar>
   )
