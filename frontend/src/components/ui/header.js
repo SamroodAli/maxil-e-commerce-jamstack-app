@@ -70,6 +70,19 @@ const Header = ({ categories }) => {
     { node: { name: "Contact Us", strapiId: "contact", link: "/contact" } },
   ]
 
+  const activeIndex = () => {
+    const found = routes.indexOf(
+      routes.filter(({ node }) => {
+        if (node.link) {
+          console.log(`/${node.link}`)
+          return node.link === window.location.pathname
+        }
+        return `/${node.name.toLowerCase()}` === window.location.pathname
+      })[0]
+    )
+    return found === -1 ? false : found
+  }
+
   const actions = [
     {
       icon: search,
@@ -117,7 +130,7 @@ const Header = ({ categories }) => {
             setDrawerOpen={setDrawerOpen}
           />
         ) : (
-          <Tabs routes={routes} />
+          <Tabs routes={routes} value={activeIndex()} />
         )}
         {actions.map(action =>
           action.visible ? (

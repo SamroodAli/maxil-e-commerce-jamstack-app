@@ -18,11 +18,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const HeaderTabs = ({ routes }) => {
+const HeaderTabs = ({ routes, value }) => {
   const classes = useStyles()
   return (
     <Tabs
-      value={0}
+      value={value}
       classes={{ indicator: classes.coloredIndicator, root: classes.tabs }}
     >
       {routes.map(({ node }) => (
@@ -40,6 +40,7 @@ const HeaderTabs = ({ routes }) => {
 
 HeaderTabs.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]).isRequired,
 }
 
 export default HeaderTabs
