@@ -11,10 +11,16 @@ const useStyles = makeStyles(theme => ({
   tab: {
     ...theme.typography.body1,
     fontWeight: 600,
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1.3rem",
+    },
   },
   tabs: {
     marginLeft: "auto",
     marginRight: "auto",
+    [theme.breakpoints.down("md")]: {
+      marginRight: "2rem",
+    },
   },
 }))
 

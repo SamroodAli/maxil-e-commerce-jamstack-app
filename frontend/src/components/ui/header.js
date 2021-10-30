@@ -25,8 +25,11 @@ const useStyles = makeStyles(theme => {
       backgroundColor: "#fff",
     },
     logo: {
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "3rem",
+      },
       [theme.breakpoints.down("xs")]: {
-        fontSize: "2rem",
+        fontSize: "2.5rem",
       },
     },
     logoText: {
@@ -43,8 +46,9 @@ const useStyles = makeStyles(theme => {
       [theme.breakpoints.down("xs")]: {
         height: "2rem",
         width: "2rem",
-        padding: "0.1rem",
+        padding: "0.2rem",
       },
+      // below 300px
     },
     iconButton: {
       [theme.breakpoints.down("xs")]: {
@@ -62,8 +66,10 @@ const useStyles = makeStyles(theme => {
 
 const Header = ({ categories }) => {
   const classes = useStyles()
-  const matchesMD = useMediaQuery(theme => theme.breakpoints.down("md"))
+
   const [drawerOpen, setDrawerOpen] = useState(false)
+  // use media query below 1000px
+  const matchesMD = useMediaQuery("(max-width:1200px)")
 
   const routes = [
     ...categories,
