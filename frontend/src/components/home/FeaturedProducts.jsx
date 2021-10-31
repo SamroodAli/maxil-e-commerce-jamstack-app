@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: "no-repeat",
     width: "100%",
     height: "180rem",
+    padding: "0 2.5rem",
   },
   featured: {
     height: "20rem",
@@ -29,8 +30,10 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     borderRadius: 0,
-    height: "25rem",
-    width: "25rem",
+    height: "24rem",
+    width: "24rem",
+    boxSizing: "border-box",
+    boxShadow: theme.shadows[5],
   },
 }))
 
@@ -56,24 +59,39 @@ const Featured = () => {
     }
   `)
   return (
-    <Grid container direction="column" classes={{ root: classes.background }}>
-      {data.allStrapiProducts.edges.map(({ node }, i) => (
-        <Grid item container key={node.strapiId}>
-          <Grid item>
-            <IconButton classes={{ root: classes.frame }}>
-              <img
-                src={
-                  process.env.GATSBY_STRAPI_API_URL +
-                  node.variants[0].images[0].url
-                }
-                alt={node.name}
-                className={classes.featured}
-              />
-            </IconButton>
-            <Grid container direction="column"></Grid>
+    <Grid
+      container
+      direction="column"
+      classes={{ root: classes.background }}
+      justifyContent="center"
+    >
+      {data.allStrapiProducts.edges.map(({ node }, i) => {
+        let alignment
+        if (i === 0 || i === 3) {
+          alignment = "flex-start"
+        } else if (i === 1 || i === 4) {
+          alignment = "center"
+        } else {
+          alignment = "flex-end"
+        }
+        return (
+          <Grid item container key={node.strapiId} justifyContent={alignment}>
+            <Grid item>
+              <IconButton classes={{ root: classes.frame }}>
+                <img
+                  src={
+                    process.env.GATSBY_STRAPI_API_URL +
+                    node.variants[0].images[0].url
+                  }
+                  alt={node.name}
+                  className={classes.featured}
+                />
+              </IconButton>
+              <Grid container direction="column"></Grid>
+            </Grid>
           </Grid>
-        </Grid>
-      ))}
+        )
+      })}
     </Grid>
   )
 }
