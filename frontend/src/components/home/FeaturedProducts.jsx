@@ -8,6 +8,7 @@ import Rating from "./Rating"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
+import Chip from "@material-ui/core/Chip"
 
 import frame from "../../images/product-frame-grid.svg"
 import featuredAdornment from "../../images/featured-adornment.svg"
@@ -135,6 +136,9 @@ const Featured = () => {
               <Grid item>
                 <Typography variant="h4">{node.name.split(" ")[0]}</Typography>
                 <Rating number={4} />
+              </Grid>
+              <Grid item>
+                <Chip label={`$${node.variants[0].price}`} />
               </Grid>
             </Grid>
           </Grid>
