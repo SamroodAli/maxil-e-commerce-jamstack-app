@@ -39,11 +39,14 @@ const useStyles = makeStyles(theme => ({
     boxSizing: "border-box",
     boxShadow: theme.shadows[5],
     position: "absolute",
+    zIndex: 1,
   },
   slide: {
     backgroundColor: theme.palette.primary.main,
     height: "20rem",
     width: "24rem",
+    transition: "transform 0.5s ease",
+    padding: "1rem 2rem",
   },
   slideLeft: {
     transform: "translate(-24rem,0px)",
@@ -127,7 +130,11 @@ const Featured = () => {
                     (alignment === "flex-start" || alignment === "center"),
                 }),
               }}
-            ></Grid>
+            >
+              <Grid item>
+                <Typography variant="h4">{node.name.split(" ")[0]}</Typography>
+              </Grid>
+            </Grid>
           </Grid>
         )
       })}
