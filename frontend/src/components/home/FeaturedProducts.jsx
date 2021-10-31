@@ -19,6 +19,19 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "180rem",
   },
+  featured: {
+    height: "20rem",
+    width: "20rem",
+  },
+  frame: {
+    backgroundImage: `url(${frame})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    borderRadius: 0,
+    height: "25rem",
+    width: "25rem",
+  },
 }))
 
 const Featured = () => {
@@ -43,11 +56,25 @@ const Featured = () => {
     }
   `)
   return (
-    <Grid
-      container
-      direction="column"
-      classes={{ root: classes.background }}
-    ></Grid>
+    <Grid container direction="column" classes={{ root: classes.background }}>
+      {data.allStrapiProducts.edges.map(({ node }, i) => (
+        <Grid item container key={node.strapiId}>
+          <Grid item>
+            <IconButton classes={{ root: classes.frame }}>
+              <img
+                src={
+                  process.env.GATSBY_STRAPI_API_URL +
+                  node.variants[0].images[0].url
+                }
+                alt={node.name}
+                className={classes.featured}
+              />
+            </IconButton>
+            <Grid container direction="column"></Grid>
+          </Grid>
+        </Grid>
+      ))}
+    </Grid>
   )
 }
 
