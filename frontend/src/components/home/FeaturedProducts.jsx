@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
+import clsx from "clsx"
 
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
@@ -44,10 +45,17 @@ const useStyles = makeStyles(theme => ({
     height: "20rem",
     width: "24rem",
   },
+  slideLeft: {
+    transform: "translate(-24rem,0px)",
+  },
+  slideRight: {
+    transform: "translate(24rem,0px)",
+  },
 }))
 
 const Featured = () => {
   const classes = useStyles()
+  const [expanded, setExpanded] = useState(null)
 
   const data = useStaticQuery(graphql`
     query FeaturedQuery {
@@ -92,7 +100,12 @@ const Featured = () => {
             classes={{ root: classes.productContainer }}
             alignItems="center"
           >
-            <IconButton classes={{ root: classes.frame }}>
+            <IconButton
+              classes={{ root: classes.frame }}
+              onClick={() =>
+                expanded === i ? setExpanded(null) : setExpanded(i)
+              }
+            >
               <img
                 src={
                   process.env.GATSBY_STRAPI_API_URL +
@@ -105,7 +118,15 @@ const Featured = () => {
             <Grid
               container
               direction="column"
-              classes={{ root: classes.slide }}
+              classes={{
+                root: clsx(classes.slide, {
+                  [classes.slideLeft]:
+                    expanded === i && alignment === "flex-end",
+                  [classes.slideRight]:
+                    expanded === i &&
+                    (alignment === "flex-start" || alignment === "center"),
+                }),
+              }}
             ></Grid>
           </Grid>
         )
