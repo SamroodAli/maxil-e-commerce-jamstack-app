@@ -96,7 +96,7 @@ const PromotionalProducts = () => {
                 process.env.GATSBY_STRAPI_API_URL +
                 node.variants[0].images[0].url
               }
-              alt={`image-${i}`}
+              alt={i}
               className={classes.carouselImage}
             />
           </IconButton>
@@ -112,9 +112,6 @@ const PromotionalProducts = () => {
     ),
   }))
 
-  console.log(data)
-  console.log(process.env.GATSBY_STRAPI_API_URL)
-  console.log(process.env)
   return (
     <Grid
       container

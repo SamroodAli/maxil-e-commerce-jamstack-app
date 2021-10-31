@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link, navigate } from "gatsby"
 import PropTypes from "prop-types"
 
-import Drawer from "./drawer"
+import Drawer from "./Drawer"
 import Tabs from "./HeaderTabs"
 
 import useMediaQuery from "@material-ui/core/useMediaQuery"
