@@ -19,7 +19,6 @@ const Rating = ({ number }) => {
   return (
     <>
       {[...Array(Math.floor(number))].map((e, i) => {
-        console.log(e)
         return (
           <img
             src={fullStar}

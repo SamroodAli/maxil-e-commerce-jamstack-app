@@ -26,12 +26,12 @@ const HeroBlock = () => {
           </Grid>
           <Grid item>
             <Typography variant="h3" align="center">
-              high quality, custom-designed shirts,hats and hoodies
+              high quality, custom-designed shirts, hats and hoodies
             </Typography>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item md={7}>
+      <Grid item md={6}>
         <Lottie options={defaultOptions} width="50rem" />
       </Grid>
     </Grid>
