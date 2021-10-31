@@ -11,6 +11,9 @@ import featuredAdornment from "../../images/featured-adornment.svg"
 
 console.log(featuredAdornment)
 const useStyles = makeStyles(theme => ({
+  productContainer: {
+    margin: "5rem 0",
+  },
   background: {
     backgroundImage: `url(${featuredAdornment})`,
     backgroundPosition: "top",
@@ -34,6 +37,12 @@ const useStyles = makeStyles(theme => ({
     width: "24rem",
     boxSizing: "border-box",
     boxShadow: theme.shadows[5],
+    position: "absolute",
+  },
+  slide: {
+    backgroundColor: theme.palette.primary.main,
+    height: "20rem",
+    width: "24rem",
   },
 }))
 
@@ -75,20 +84,29 @@ const Featured = () => {
           alignment = "flex-end"
         }
         return (
-          <Grid item container key={node.strapiId} justifyContent={alignment}>
-            <Grid item>
-              <IconButton classes={{ root: classes.frame }}>
-                <img
-                  src={
-                    process.env.GATSBY_STRAPI_API_URL +
-                    node.variants[0].images[0].url
-                  }
-                  alt={node.name}
-                  className={classes.featured}
-                />
-              </IconButton>
-              <Grid container direction="column"></Grid>
-            </Grid>
+          <Grid
+            item
+            container
+            key={node.strapiId}
+            justifyContent={alignment}
+            classes={{ root: classes.productContainer }}
+            alignItems="center"
+          >
+            <IconButton classes={{ root: classes.frame }}>
+              <img
+                src={
+                  process.env.GATSBY_STRAPI_API_URL +
+                  node.variants[0].images[0].url
+                }
+                alt={node.name}
+                className={classes.featured}
+              />
+            </IconButton>
+            <Grid
+              container
+              direction="column"
+              classes={{ root: classes.slide }}
+            ></Grid>
           </Grid>
         )
       })}
