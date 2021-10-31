@@ -9,9 +9,11 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import Chip from "@material-ui/core/Chip"
+import Button from "@material-ui/core/Button"
 
 import frame from "../../images/product-frame-grid.svg"
 import featuredAdornment from "../../images/featured-adornment.svg"
+import explore from "../../images/explore.svg"
 
 const useStyles = makeStyles(theme => ({
   productContainer: {
@@ -55,6 +57,22 @@ const useStyles = makeStyles(theme => ({
   },
   slideRight: {
     transform: "translate(24rem,0px)",
+  },
+  exploreContainer: {
+    marginTop: "auto",
+  },
+  exploreButton: {
+    textTransform: "none",
+  },
+  exploreIcon: {
+    height: "1.5rem",
+    marginLeft: "1rem",
+  },
+  chipLabel: {
+    ...theme.typography.h5,
+  },
+  chipRoot: {
+    backgroundColor: theme.palette.secondary.main,
   },
 }))
 
@@ -138,7 +156,20 @@ const Featured = () => {
                 <Rating number={4} />
               </Grid>
               <Grid item>
-                <Chip label={`$${node.variants[0].price}`} />
+                <Chip
+                  classes={{ root: classes.chipRoot, label: classes.chipLabel }}
+                  label={`$${node.variants[0].price}`}
+                />
+              </Grid>
+              <Grid item classes={{ root: classes.exploreContainer }}>
+                <Button classes={{ root: classes.exploreButton }}>
+                  <Typography variant="h5">Details</Typography>
+                  <img
+                    src={explore}
+                    alt="go to product details"
+                    className={classes.exploreIcon}
+                  />
+                </Button>
               </Grid>
             </Grid>
           </Grid>
