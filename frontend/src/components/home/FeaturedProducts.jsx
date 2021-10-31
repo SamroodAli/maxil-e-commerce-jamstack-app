@@ -3,6 +3,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import clsx from "clsx"
 
+import Rating from "./Rating"
+
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
@@ -10,7 +12,6 @@ import IconButton from "@material-ui/core/IconButton"
 import frame from "../../images/product-frame-grid.svg"
 import featuredAdornment from "../../images/featured-adornment.svg"
 
-console.log(featuredAdornment)
 const useStyles = makeStyles(theme => ({
   productContainer: {
     margin: "5rem 0",
@@ -133,6 +134,7 @@ const Featured = () => {
             >
               <Grid item>
                 <Typography variant="h4">{node.name.split(" ")[0]}</Typography>
+                <Rating number={4} />
               </Grid>
             </Grid>
           </Grid>
