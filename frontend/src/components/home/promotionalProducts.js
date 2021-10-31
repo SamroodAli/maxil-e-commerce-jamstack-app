@@ -39,6 +39,17 @@ const useStyles = makeStyles(theme => ({
   carouselContainer: {
     marginLeft: "20rem",
   },
+  space: {
+    margin: "0 15rem",
+    marginBottom: "10rem",
+  },
+  explore: {
+    textTransform: "none",
+    marginRight: "2rem",
+  },
+  descriptionContainer: {
+    textAlign: "right",
+  },
 }))
 
 const PromotionalProducts = () => {
@@ -71,7 +82,14 @@ const PromotionalProducts = () => {
     content: (
       <Grid container direction="column" alignItems="center">
         <Grid item>
-          <IconButton disableRipple classes={{ root: classes.iconButton }}>
+          <IconButton
+            disableRipple
+            classes={{
+              root: clsx(classes.iconButton, {
+                [classes.space]: selectedSlide !== i,
+              }),
+            }}
+          >
             <img
               src={
                 process.env.GATSBY_STRAPI_API_URL +
@@ -106,7 +124,17 @@ const PromotionalProducts = () => {
       <Grid item classes={{ root: classes.carouselContainer }}>
         <Carousel slides={slides} goToSlide={selectedSlide} />
       </Grid>
-      <Grid item>{slides[selectedSlide].description}</Grid>
+      <Grid item classes={{ root: classes.descriptionContainer }}>
+        <Typography variant="h2" paragraph>
+          {slides[selectedSlide].description}
+        </Typography>
+        <Button>
+          <Typography variant="h4" classes={{ root: classes.explore }}>
+            Explore
+          </Typography>
+          <img src={expore} alt="explore" />
+        </Button>
+      </Grid>
     </Grid>
   )
 }
