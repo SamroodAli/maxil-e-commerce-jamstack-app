@@ -7,12 +7,31 @@ import { makeStyles } from "@material-ui/core/styles"
 
 import cta from "../../images/cta.svg"
 
-const useStyles = makeStyles(theme => ({}))
+const useStyles = makeStyles(theme => ({
+  account: {
+    color: "#fff",
+    marginLeft: "2rem",
+  },
+  body: {
+    maxWidth: "45rem",
+  },
+  container: {
+    marginBottom: "15rem",
+  },
+  buttonContainer: {
+    marginTop: "3rem",
+  },
+}))
 
 const CallToAction = () => {
   const classes = useStyles()
   return (
-    <Grid container justify="space-around">
+    <Grid
+      container
+      justify="space-around"
+      alignItems="center"
+      classes={{ root: classes.container }}
+    >
       <Grid item>
         <img src={cta} alt="quality committed" />
       </Grid>
@@ -21,21 +40,25 @@ const CallToAction = () => {
           <Grid item>
             <Typography variant="h1">Committed to Quality</Typography>
           </Grid>
-          <Grid item>
+          <Grid item classes={{ root: classes.body }}>
             <Typography variant="body1">
               at MAXIL, our mission is to provide comfortable, durable, premium,
               designer clothing and clothing accessories to developer and
               technology enthusiasts.
             </Typography>
           </Grid>
-          <Grid item container>
+          <Grid item container classes={{ root: classes.buttonContainer }}>
             <Grid item>
               <Button variant="outlined" color="primary">
                 Contact Us
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="primary">
+              <Button
+                color="primary"
+                variant="contained"
+                classes={{ root: classes.account }}
+              >
                 Create account
               </Button>
             </Grid>
