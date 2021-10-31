@@ -24,6 +24,21 @@ const useStyles = makeStyles(theme => ({
   productName: {
     color: "#fff",
   },
+  iconButton: {
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  carouselImage: {
+    height: "30rem",
+    width: "25rem",
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    boxShadow: theme.shadows[5],
+  },
+  carouselContainer: {
+    marginLeft: "20rem",
+  },
 }))
 
 const PromotionalProducts = () => {
@@ -54,16 +69,23 @@ const PromotionalProducts = () => {
     key: i,
     description: node.description,
     content: (
-      <Grid container direction="column">
+      <Grid container direction="column" alignItems="center">
         <Grid item>
-          <IconButton disableRipple>
-            <img src={node.variants[0].images[0].url} alt={`image-${i}`} />
+          <IconButton disableRipple classes={{ root: classes.iconButton }}>
+            <img
+              src={
+                process.env.GATSBY_STRAPI_API_URL +
+                node.variants[0].images[0].url
+              }
+              alt={`image-${i}`}
+              className={classes.carouselImage}
+            />
           </IconButton>
         </Grid>
         <Grid item>
           {selectedSlide === i && (
             <Typography variant="h1" classes={{ root: classes.productName }}>
-              {node.name}
+              {node.name.split(" ")[0]}
             </Typography>
           )}
         </Grid>
@@ -72,6 +94,8 @@ const PromotionalProducts = () => {
   }))
 
   console.log(data)
+  console.log(process.env.GATSBY_STRAPI_API_URL)
+  console.log(process.env)
   return (
     <Grid
       container
@@ -79,7 +103,7 @@ const PromotionalProducts = () => {
       alignItems="center"
       classes={{ root: classes.mainContainer }}
     >
-      <Grid item>
+      <Grid item classes={{ root: classes.carouselContainer }}>
         <Carousel slides={slides} goToSlide={selectedSlide} />
       </Grid>
       <Grid item>{slides[selectedSlide].description}</Grid>
