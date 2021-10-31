@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
@@ -21,10 +21,15 @@ const useStyles = makeStyles(theme => ({
     height: "70rem",
     padding: "30rem 10rem 10rem 10rem",
   },
+  productName: {
+    color: "#fff",
+  },
 }))
 
 const PromotionalProducts = () => {
   const classes = useStyles()
+
+  const [selectedSlide, setSelectedSlide] = useState(0)
 
   const data = useStaticQuery(graphql`
     query PromotionalProductsQuery {
@@ -44,6 +49,28 @@ const PromotionalProducts = () => {
       }
     }
   `)
+
+  const slides = data.allStrapiProducts.edges.map(({ node }, i) => ({
+    key: i,
+    description: node.description,
+    content: (
+      <Grid container direction="column">
+        <Grid item>
+          <IconButton disableRipple>
+            <img src={node.variants[0].images[0].url} alt={`image-${i}`} />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          {selectedSlide === i && (
+            <Typography variant="h1" classes={{ root: classes.productName }}>
+              {node.name}
+            </Typography>
+          )}
+        </Grid>
+      </Grid>
+    ),
+  }))
+
   console.log(data)
   return (
     <Grid
@@ -52,8 +79,10 @@ const PromotionalProducts = () => {
       alignItems="center"
       classes={{ root: classes.mainContainer }}
     >
-      <Grid item>CArousel</Grid>
-      <Grid item>Description</Grid>
+      <Grid item>
+        <Carousel slides={slides} goToSlide={selectedSlide} />
+      </Grid>
+      <Grid item>{slides[selectedSlide].description}</Grid>
     </Grid>
   )
 }
