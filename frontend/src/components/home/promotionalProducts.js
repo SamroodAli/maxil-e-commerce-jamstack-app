@@ -83,6 +83,7 @@ const PromotionalProducts = () => {
       <Grid container direction="column" alignItems="center">
         <Grid item>
           <IconButton
+            onClick={() => setSelectedSlide(i)}
             disableRipple
             classes={{
               root: clsx(classes.iconButton, {
