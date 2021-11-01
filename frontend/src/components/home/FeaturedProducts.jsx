@@ -14,6 +14,7 @@ import Button from "@material-ui/core/Button"
 import frame from "../../images/product-frame-grid.svg"
 import featuredAdornment from "../../images/featured-adornment.svg"
 import explore from "../../images/explore.svg"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 const useStyles = makeStyles(theme => ({
   productContainer: {
@@ -25,12 +26,16 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     width: "100%",
-    height: "180rem",
+    height: "220rem",
     padding: "0 2.5rem",
   },
   featured: {
     height: "20rem",
     width: "20rem",
+    [theme.breakpoints.down("md")]: {
+      height: "15rem",
+      width: "15rem",
+    },
   },
   frame: {
     backgroundImage: `url(${frame})`,
@@ -44,6 +49,10 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[5],
     position: "absolute",
     zIndex: 1,
+    [theme.breakpoints.down("md")]: {
+      height: "19.8rem",
+      width: "20rem",
+    },
   },
   slide: {
     backgroundColor: theme.palette.primary.main,
@@ -51,12 +60,19 @@ const useStyles = makeStyles(theme => ({
     width: "24rem",
     transition: "transform 0.5s ease",
     padding: "1rem 2rem",
+    [theme.breakpoints.down("md")]: {
+      height: "15.2rem",
+      width: "19.5rem",
+    },
   },
   slideLeft: {
     transform: "translate(-24rem,0px)",
   },
   slideRight: {
     transform: "translate(24rem,0px)",
+  },
+  slideDown: {
+    transform: "translate(0,17rem)",
   },
   exploreContainer: {
     marginTop: "auto",
@@ -79,6 +95,7 @@ const useStyles = makeStyles(theme => ({
 const Featured = () => {
   const classes = useStyles()
   const [expanded, setExpanded] = useState(null)
+  const matchesMD = useMediaQuery(theme => theme.breakpoints.down("md"))
 
   const data = useStaticQuery(graphql`
     query FeaturedQuery {
@@ -102,17 +119,21 @@ const Featured = () => {
     <Grid
       container
       direction="column"
+      justifyContent={matchesMD ? "space-between" : "center"}
       classes={{ root: classes.background }}
-      justifyContent="center"
     >
       {data.allStrapiProducts.edges.map(({ node }, i) => {
         let alignment
-        if (i === 0 || i === 3) {
-          alignment = "flex-start"
-        } else if (i === 1 || i === 4) {
+        if (matchesMD) {
           alignment = "center"
         } else {
-          alignment = "flex-end"
+          if (i === 0 || i === 3) {
+            alignment = "flex-start"
+          } else if (i === 1 || i === 4) {
+            alignment = "center"
+          } else {
+            alignment = "flex-end"
+          }
         }
         return (
           <Grid
@@ -144,10 +165,12 @@ const Featured = () => {
               classes={{
                 root: clsx(classes.slide, {
                   [classes.slideLeft]:
-                    expanded === i && alignment === "flex-end",
+                    !matchesMD && expanded === i && alignment === "flex-end",
                   [classes.slideRight]:
+                    !matchesMD &&
                     expanded === i &&
                     (alignment === "flex-start" || alignment === "center"),
+                  [classes.slideDown]: matchesMD && expanded === i,
                 }),
               }}
             >
