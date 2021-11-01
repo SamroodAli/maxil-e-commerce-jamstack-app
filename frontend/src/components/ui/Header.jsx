@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => {
     coloredIndicator: {
       backgroundColor: "#fff",
     },
+    appBar: {
+      marginTop: "1rem",
+    },
     logo: {
       [theme.breakpoints.down("sm")]: {
         fontSize: "3rem",
@@ -46,7 +49,7 @@ const useStyles = makeStyles(theme => {
       [theme.breakpoints.down("xs")]: {
         height: "2rem",
         width: "2rem",
-        padding: "0.3rem",
+        padding: "0.6rem",
       },
     },
     iconButton: {
@@ -114,7 +117,12 @@ const Header = ({ categories }) => {
   ]
 
   return (
-    <AppBar color="transparent" elevation={0} position="static">
+    <AppBar
+      color="transparent"
+      elevation={0}
+      position="static"
+      classes={{ root: classes.appBar }}
+    >
       <Toolbar disableGutters={matchesMD}>
         <Button
           component={Link}
