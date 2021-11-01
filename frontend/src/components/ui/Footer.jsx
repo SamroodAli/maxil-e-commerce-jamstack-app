@@ -49,6 +49,12 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: "transparent",
     },
+    [theme.breakpoints.down("md")]: {
+      margin: "0 2rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 1rem",
+    },
   },
   "@global": {
     body: {
@@ -62,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 
 const Footer = () => {
   const classes = useStyles()
-  const matchesMD = useMediaQuery("(max-width:1087px)")
+  const matchesMD = useMediaQuery("(max-width:1168px)")
 
   const socialMedia = [
     { icon: facebook, alt: "facebook", link: "https://facebook.com" },
@@ -137,6 +143,7 @@ const Footer = () => {
           <Grid
             container
             justifyContent="center"
+            alignContent="center"
             direction={matchesMD ? "row" : "column"}
           >
             {socialMedia.map(({ icon, alt, link }) => (

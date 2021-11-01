@@ -46,9 +46,8 @@ const useStyles = makeStyles(theme => {
       [theme.breakpoints.down("xs")]: {
         height: "2rem",
         width: "2rem",
-        padding: "0.2rem",
+        padding: "0.3rem",
       },
-      // below 300px
     },
     iconButton: {
       [theme.breakpoints.down("xs")]: {

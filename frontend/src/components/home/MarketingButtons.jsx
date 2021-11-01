@@ -15,17 +15,61 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    height: "35rem",
-    width: "35rem",
+    height: "50rem",
+    width: "50rem",
     transition: "transform 0.3s ease",
     "&:hover": {
       transform: "scale(1.1)",
     },
+    [theme.breakpoints.down("lg")]: {
+      height: "40rem",
+      width: "40rem",
+      margin: "3rem",
+    },
+    [theme.breakpoints.down("md")]: {
+      height: "30rem",
+      width: "30rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "25rem",
+      width: "25rem",
+      margin: "2rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "20rem",
+      width: "20rem",
+      margin: "2rem 0",
+
+      "&:hover": {
+        transform: "scale(1)",
+      },
+    },
   },
-  marketingLabels: {
-    color: theme.palette.primary.main,
-    fontSize: "2rem",
-    marginTop: "1rem",
+  icon: {
+    [theme.breakpoints.down("md")]: {
+      height: "9rem",
+      width: "9em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "8rem",
+      width: "8rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "5rem",
+      width: "5rem",
+    },
+  },
+
+  label: {
+    [theme.breakpoints.down("md")]: {
+      fontSize: "3rem",
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.75rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "2.25rem",
+    },
   },
   marketingContainer: {
     margin: "15rem 0",
@@ -62,13 +106,14 @@ const MarketingButtons = () => {
             href={button.href}
           >
             <Grid item>
-              <img src={button.icon} alt={button.label} />
+              <img
+                className={classes.icon}
+                src={button.icon}
+                alt={button.label}
+              />
             </Grid>
             <Grid item>
-              <Typography
-                variant="h2"
-                classes={{ root: classes.marketingLabels }}
-              >
+              <Typography variant="h1" classes={{ root: classes.label }}>
                 {button.label}
               </Typography>
             </Grid>

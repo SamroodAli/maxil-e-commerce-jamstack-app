@@ -11,6 +11,14 @@ import animationData from "../../images/data.json"
 const useStyles = makeStyles(theme => ({
   textContainer: {
     padding: "2rem",
+    [theme.breakpoints.down("xs")]: {
+      padding: "1rem",
+    },
+  },
+  heading: {
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3rem",
+    },
   },
 }))
 
@@ -32,7 +40,11 @@ const HeroBlock = () => {
       <Grid item classes={{ root: classes.textContainer }}>
         <Grid container direction="column">
           <Grid item>
-            <Typography variant="h1" align="center">
+            <Typography
+              variant="h1"
+              align="center"
+              classes={{ root: classes.heading }}
+            >
               The primier
               <br />
               Developer Clothing Line
@@ -50,7 +62,7 @@ const HeroBlock = () => {
           options={defaultOptions}
           width={
             matchesXS
-              ? "25rem"
+              ? "20rem"
               : matchesMD
               ? "30rem"
               : matchesLG

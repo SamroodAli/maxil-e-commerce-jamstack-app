@@ -67,7 +67,7 @@ const useStyles = makeStyles(theme => ({
       margin: "0 8rem 10rem 8rem",
     },
     [theme.breakpoints.down("xs")]: {
-      margin: "0 5rem 10rem 5rem",
+      margin: "0 6rem 10rem 6rem",
     },
   },
   explore: {
