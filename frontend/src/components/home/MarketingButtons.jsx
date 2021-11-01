@@ -50,7 +50,7 @@ const MarketingButtons = () => {
       classes={{ root: classes.marketingContainer }}
     >
       {buttons.map(button => (
-        <Grid item>
+        <Grid item key={button.label}>
           <Grid
             container
             alignItems="center"

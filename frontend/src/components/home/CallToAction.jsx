@@ -28,7 +28,7 @@ const CallToAction = () => {
   return (
     <Grid
       container
-      justify="space-around"
+      justifyContent="space-around"
       alignItems="center"
       classes={{ root: classes.container }}
     >
@@ -49,7 +49,12 @@ const CallToAction = () => {
           </Grid>
           <Grid item container classes={{ root: classes.buttonContainer }}>
             <Grid item>
-              <Button variant="outlined" color="primary">
+              <Button
+                variant="outlined"
+                color="primary"
+                component={Link}
+                to="/contact"
+              >
                 Contact Us
               </Button>
             </Grid>
@@ -57,6 +62,8 @@ const CallToAction = () => {
               <Button
                 color="primary"
                 variant="contained"
+                component={Link}
+                to={"/account"}
                 classes={{ root: classes.account }}
               >
                 Create account
