@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton"
 import Carousel from "react-spring-3d-carousel"
 import clsx from "clsx"
 import { makeStyles } from "@material-ui/core/styles"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 import promoAdornment from "../../images/promo-adornment.svg"
 import expore from "../../images/explore.svg"
@@ -20,9 +21,18 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     height: "70rem",
     padding: "30rem 10rem 10rem 10rem",
+    [theme.breakpoints.down("lg")]: {
+      padding: "20rem 2rem 2rem 2rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      overflow: "hidden",
+    },
   },
   productName: {
     color: "#fff",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3rem",
+    },
   },
   iconButton: {
     "&:hover": {
@@ -35,13 +45,30 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#fff",
     borderRadius: 20,
     boxShadow: theme.shadows[5],
+    [theme.breakpoints.down("sm")]: {
+      height: "25rem",
+      width: "20rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: "20rem",
+      width: "15rem",
+    },
   },
   carouselContainer: {
     marginLeft: "20rem",
+    [theme.breakpoints.down("md")]: {
+      marginLeft: 0,
+      height: "30rem",
+    },
   },
   space: {
-    margin: "0 15rem",
-    marginBottom: "10rem",
+    margin: "0 15rem 10rem 15rem",
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 8rem 10rem 8rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: "0 5rem 10rem 5rem",
+    },
   },
   explore: {
     textTransform: "none",
@@ -49,13 +76,16 @@ const useStyles = makeStyles(theme => ({
   },
   descriptionContainer: {
     textAlign: "right",
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center",
+    },
   },
 }))
 
 const PromotionalProducts = () => {
   const classes = useStyles()
-
   const [selectedSlide, setSelectedSlide] = useState(0)
+  const matchesMD = useMediaQuery(theme => theme.breakpoints.down("md"))
 
   const data = useStaticQuery(graphql`
     query PromotionalProductsQuery {
@@ -115,15 +145,16 @@ const PromotionalProducts = () => {
   return (
     <Grid
       container
-      justifyContent="space-between"
+      justifyContent={matchesMD ? "space-around" : "space-between"}
       alignItems="center"
       classes={{ root: classes.mainContainer }}
+      direction={matchesMD ? "column" : "row"}
     >
       <Grid item classes={{ root: classes.carouselContainer }}>
         <Carousel slides={slides} goToSlide={selectedSlide} />
       </Grid>
       <Grid item classes={{ root: classes.descriptionContainer }}>
-        <Typography variant="h2" paragraph>
+        <Typography variant="h4" paragraph>
           {slides[selectedSlide].description}
         </Typography>
         <Button>

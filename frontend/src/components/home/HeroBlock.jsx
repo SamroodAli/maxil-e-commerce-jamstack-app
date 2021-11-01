@@ -50,7 +50,7 @@ const HeroBlock = () => {
           options={defaultOptions}
           width={
             matchesXS
-              ? "20rem"
+              ? "25rem"
               : matchesMD
               ? "30rem"
               : matchesLG
