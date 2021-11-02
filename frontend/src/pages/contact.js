@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
 import TextField from "@material-ui/core/TextField"
-import { Link } from "gatsby"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 import { makeStyles, useTheme } from "@material-ui/core/styles"
@@ -201,13 +200,41 @@ const ContactPage = () => {
     },
   }
 
+  const info = [
+    {
+      label: (
+        <>
+          1234 S Example St
+          <br />
+          Wichita,KS 676111
+        </>
+      ),
+      icon: <img className={classes.contactIcon} src={address} alt="address" />,
+    },
+    {
+      label: "(555) 555-5555",
+      icon: (
+        <div className={classes.contactIcon}>
+          <PhoneAdornment />
+        </div>
+      ),
+    },
+    {
+      label: "samrood.kl@gmail.com",
+      icon: (
+        <div className={classes.contactEmailIcon}>
+          <Email color="#fff" />
+        </div>
+      ),
+    },
+  ]
+
   const [errors, setErrors] = useState({})
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"))
-  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"))
 
   const isDisabled =
     Object.keys(errors).some(field => errors[field]) ||
-    Object.keys(errors).length != 4
+    Object.keys(errors).length !== 4
 
   return (
     <Layout>
@@ -244,6 +271,7 @@ const ContactPage = () => {
                   }
                   return (
                     <Grid
+                      key={field}
                       item
                       classes={{
                         root:
@@ -273,11 +301,12 @@ const ContactPage = () => {
                             ...fields[field].inputClasses,
                           },
                           disableUnderline: field === "message",
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              {fields[field].adornment}
-                            </InputAdornment>
-                          ),
+                          startAdornment:
+                            field === "message" ? null : (
+                              <InputAdornment position="start">
+                                {fields[field].adornment}
+                              </InputAdornment>
+                            ),
                         }}
                       />
                     </Grid>
@@ -288,7 +317,6 @@ const ContactPage = () => {
             <Grid
               item
               component={Button}
-              classes={{ root: classes.sendButton }}
               disabled={isDisabled}
               classes={{
                 root: clsx(classes.buttonContainer, classes.blockContainer, {
@@ -311,58 +339,27 @@ const ContactPage = () => {
             justifyContent="space-between"
             classes={{ root: classes.infoContainer }}
           >
-            <Grid item container alignItems="center">
-              <Grid item classes={{ root: classes.iconContainer }}>
-                <img
-                  className={classes.contactIcon}
-                  src={address}
-                  alt="address"
-                />
+            {info.map((section, i) => (
+              <Grid
+                key={section.label}
+                item
+                container
+                alignItems="center"
+                classes={i === 1 ? { root: classes.middleInfo } : undefined}
+              >
+                <Grid item classes={{ root: classes.iconContainer }}>
+                  {section.icon}
+                </Grid>
+                <Grid item>
+                  <Typography
+                    variant="h2"
+                    classes={{ root: classes.contactInfo }}
+                  >
+                    {section.label}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Typography
-                  variant="h2"
-                  classes={{ root: classes.contactInfo }}
-                >
-                  1234 S Example St{matchesXS ? <br /> : null}Wichita,KS 676111
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid
-              item
-              container
-              alignItems="center"
-              classes={{ root: classes.middleInfo }}
-            >
-              <Grid item classes={{ root: classes.iconContainer }}>
-                <div className={classes.contactIcon}>
-                  <PhoneAdornment color="#fff" />
-                </div>
-              </Grid>
-              <Grid item>
-                <Typography
-                  variant="h2"
-                  classes={{ root: classes.contactInfo }}
-                >
-                  (555) 555-5555
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item container alignItems="center">
-              <Grid item classes={{ root: classes.iconContainer }}>
-                <div className={classes.contactEmailIcon}>
-                  <Email color="#fff" />
-                </div>
-              </Grid>
-              <Grid item>
-                <Typography
-                  variant="h2"
-                  classes={{ root: classes.contactInfo }}
-                >
-                  samrood.kl@gmail.com
-                </Typography>
-              </Grid>
-            </Grid>
+            ))}
           </Grid>
         </Grid>
       </Grid>
