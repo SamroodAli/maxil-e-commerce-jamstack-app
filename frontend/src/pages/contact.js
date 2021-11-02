@@ -20,7 +20,7 @@ import Layout from "../components/ui/Layout"
 
 const useStyles = makeStyles(theme => ({
   mainContainer: {
-    height: "40rem",
+    height: "45rem",
     backgroundColor: theme.palette.primary.main,
     marginBottom: "10rem",
   },
@@ -164,7 +164,9 @@ const ContactPage = () => {
                       setErrors({ ...errors, name: !valid.name })
                     }}
                     error={errors.name}
-                    helperText={errors.name && "Name is required"}
+                    helperText={
+                      errors.name && "Please enter a name longer than 3 letters"
+                    }
                     InputProps={{
                       classes: { input: classes.input },
                       startAdornment: (
@@ -181,6 +183,12 @@ const ContactPage = () => {
                     classes={{ root: classes.textField }}
                     value={email}
                     onChange={e => setEmail(e.target.value)}
+                    onBlur={e => {
+                      const valid = validate({ email })
+                      setErrors({ ...errors, email: !valid.email })
+                    }}
+                    error={errors.email}
+                    helperText={errors.email && "Please enter a valid email"}
                     InputProps={{
                       classes: { input: classes.input },
                       startAdornment: (
@@ -199,6 +207,14 @@ const ContactPage = () => {
                     classes={{ root: classes.textField }}
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
+                    onBlur={e => {
+                      const valid = validate({ phone })
+                      setErrors({ ...errors, phone: !valid.phone })
+                    }}
+                    error={errors.phone}
+                    helperText={
+                      errors.phone && "Please enter a valid phone number"
+                    }
                     InputProps={{
                       classes: { input: classes.input },
                       startAdornment: (
@@ -221,6 +237,15 @@ const ContactPage = () => {
                     value={message}
                     classes={{ root: classes.textField }}
                     onChange={e => setMessage(e.target.value)}
+                    onBlur={e => {
+                      const valid = validate({ message })
+                      setErrors({ ...errors, message: !valid.message })
+                    }}
+                    error={errors.message}
+                    helperText={
+                      errors.message &&
+                      "Please enter a message longer than 3 letters"
+                    }
                     InputProps={{
                       disableUnderline: true,
                       classes: { input: classes.input },
