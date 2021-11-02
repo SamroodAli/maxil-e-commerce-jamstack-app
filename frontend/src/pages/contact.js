@@ -289,6 +289,10 @@ const ContactPage = () => {
               item
               component={Button}
               classes={{ root: classes.sendButton }}
+              disabled={
+                Object.keys(errors).some(field => errors[field]) ||
+                Object.keys(errors).length != 4
+              }
               classes={{
                 root: clsx(classes.buttonContainer, classes.blockContainer),
               }}
