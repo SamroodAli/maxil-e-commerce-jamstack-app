@@ -108,6 +108,9 @@ const useStyles = makeStyles(theme => ({
     width: 25.173,
     height: 25.122,
   },
+  buttonDisabled: {
+    backgroundColor: theme.palette.grey[500],
+  },
   "@global": {
     ".MuiInput-underline:before, .MuiInput-underline:hover:not(.Mui-disabled):before":
       {
@@ -128,6 +131,10 @@ const ContactPage = () => {
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
   const [errors, setErrors] = useState({})
+
+  const isDisabled =
+    Object.keys(errors).some(field => errors[field]) ||
+    Object.keys(errors).length != 4
 
   return (
     <Layout>
@@ -289,12 +296,11 @@ const ContactPage = () => {
               item
               component={Button}
               classes={{ root: classes.sendButton }}
-              disabled={
-                Object.keys(errors).some(field => errors[field]) ||
-                Object.keys(errors).length != 4
-              }
+              disabled={isDisabled}
               classes={{
-                root: clsx(classes.buttonContainer, classes.blockContainer),
+                root: clsx(classes.buttonContainer, classes.blockContainer, {
+                  [classes.buttonDisabled]: isDisabled,
+                }),
               }}
             >
               <Typography variant="h4">Send message</Typography>
