@@ -81,7 +81,7 @@ const CallToAction = () => {
               variant="body1"
               align={matchesMD ? "center" : undefined}
             >
-              at MAXIL, our mission is to provide comfortable, durable, premium,
+              At Maxil, our mission is to provide comfortable, durable, premium,
               designer clothing and clothing accessories to developer and
               technology enthusiasts.
             </Typography>

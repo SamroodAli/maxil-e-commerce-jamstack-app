@@ -46,10 +46,14 @@ const useStyles = makeStyles(theme => {
     icon: {
       height: "3rem",
       width: "3rem",
+      padding: "0.5rem",
+      [theme.breakpoints.down("sm")]: {
+        padding: "0.4rem",
+      },
       [theme.breakpoints.down("xs")]: {
         height: "2rem",
         width: "2rem",
-        padding: "0.6rem",
+        padding: "0.3rem",
       },
     },
     iconButton: {
