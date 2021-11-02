@@ -47,17 +47,25 @@ const useStyles = makeStyles(theme => ({
   },
   contactInfo: {
     fontSize: "1rem",
+    marginLeft: "1rem",
   },
   contactIcon: {
     height: "3rem",
     width: "3rem",
+    marginRight: "2rem",
   },
   contactEmailIcon: {
     height: "2.25rem",
     width: "3rem",
+    marginRight: "2rem",
   },
   infoContainer: {
     height: "15rem",
+  },
+  middleInfo: {
+    borderTop: "2px solid #fff",
+    borderBottom: "2px solid #fff",
+    padding: "1rem 0",
   },
 }))
 
@@ -112,6 +120,7 @@ const ContactPage = () => {
           <Grid
             container
             direction="column"
+            justifyContent="space-between"
             classes={{ root: classes.infoContainer }}
           >
             <Grid item container alignItems="center">
@@ -131,7 +140,12 @@ const ContactPage = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item container alignItems="center">
+            <Grid
+              item
+              container
+              alignItems="center"
+              classes={{ root: classes.middleInfo }}
+            >
               <Grid item>
                 <img className={classes.contactIcon} src={phone} alt="phone" />
               </Grid>
