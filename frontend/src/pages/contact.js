@@ -14,6 +14,7 @@ import send from "../images/send.svg"
 import InputAdornment from "@material-ui/core/InputAdornment"
 import nameAdornment from "../images/name-adornment.svg"
 import PhoneAdornment from "../images/PhoneAdornment"
+import validate from "../components/ui/validate"
 
 import Layout from "../components/ui/Layout"
 
@@ -123,6 +124,7 @@ const ContactPage = () => {
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  const [errors, setErrors] = useState({})
 
   return (
     <Layout>
@@ -157,6 +159,12 @@ const ContactPage = () => {
                     classes={{ root: classes.textField }}
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    onBlur={e => {
+                      const valid = validate({ name })
+                      setErrors({ ...errors, name: !valid.name })
+                    }}
+                    error={errors.name}
+                    helperText={errors.name && "Name is required"}
                     InputProps={{
                       classes: { input: classes.input },
                       startAdornment: (
