@@ -158,7 +158,13 @@ const ContactPage = () => {
                     placeholder="Name"
                     classes={{ root: classes.textField }}
                     value={name}
-                    onChange={e => setName(e.target.value)}
+                    onChange={e => {
+                      if (errors.name) {
+                        const valid = validate({ name: e.target.value })
+                        setErrors({ ...errors, name: !valid.name })
+                      }
+                      setName(e.target.value)
+                    }}
                     onBlur={e => {
                       const valid = validate({ name })
                       setErrors({ ...errors, name: !valid.name })
@@ -182,7 +188,13 @@ const ContactPage = () => {
                     placeholder="Email"
                     classes={{ root: classes.textField }}
                     value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={e => {
+                      if (errors.email) {
+                        const valid = validate({ email: e.target.value })
+                        setErrors({ ...errors, email: !valid.email })
+                      }
+                      setEmail(e.target.value)
+                    }}
                     onBlur={e => {
                       const valid = validate({ email })
                       setErrors({ ...errors, email: !valid.email })
@@ -206,7 +218,13 @@ const ContactPage = () => {
                     placeholder="Phone number"
                     classes={{ root: classes.textField }}
                     value={phone}
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={e => {
+                      if (errors.phone) {
+                        const valid = validate({ phone: e.target.value })
+                        setErrors({ ...errors, phone: !valid.phone })
+                      }
+                      setPhone(e.target.value)
+                    }}
                     onBlur={e => {
                       const valid = validate({ phone })
                       setErrors({ ...errors, phone: !valid.phone })
@@ -236,7 +254,13 @@ const ContactPage = () => {
                     rows={8}
                     value={message}
                     classes={{ root: classes.textField }}
-                    onChange={e => setMessage(e.target.value)}
+                    onChange={e => {
+                      if (errors.message) {
+                        const valid = validate({ message: e.target.value })
+                        setErrors({ ...errors, message: !valid.message })
+                      }
+                      setMessage(e.target.value)
+                    }}
                     onBlur={e => {
                       const valid = validate({ message })
                       setErrors({ ...errors, message: !valid.message })
