@@ -12,6 +12,16 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "2rem",
     },
   },
+  "@global": {
+    [`input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active`]: {
+      "-webkit-box-shadow": `0 0 0 30px ${theme.palette.primary.main} inset !important`,
+      backgroundColor: `${theme.palette.primary.main} !important`,
+      backgroundClip: "content-box !important",
+    },
+  },
 }))
 
 const Layout = ({ children }) => {
