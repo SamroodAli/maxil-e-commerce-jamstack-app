@@ -56,6 +56,9 @@ const useStyles = makeStyles(theme => ({
     height: "2.25rem",
     width: "3rem",
   },
+  infoContainer: {
+    height: "15rem",
+  },
 }))
 
 const ContactPage = () => {
@@ -106,7 +109,11 @@ const ContactPage = () => {
         </Grid>
         {/* Contact Info */}
         <Grid item>
-          <Grid container direction="column">
+          <Grid
+            container
+            direction="column"
+            classes={{ root: classes.infoContainer }}
+          >
             <Grid item container alignItems="center">
               <Grid item>
                 <img

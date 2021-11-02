@@ -12,9 +12,6 @@ const useStyles = makeStyles(theme => ({
       marginBottom: "2rem",
     },
   },
-  main: {
-    overflow: "hidden",
-  },
 }))
 
 const Layout = ({ children }) => {
