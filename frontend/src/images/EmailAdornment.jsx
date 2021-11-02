@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 function Icon({ color }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="17">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 17">
       <g
         stroke={color || "#708670"}
         strokeLinecap="round"

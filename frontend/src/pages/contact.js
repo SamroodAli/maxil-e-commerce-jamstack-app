@@ -8,7 +8,7 @@ import clsx from "clsx"
 
 import address from "../images/address.svg"
 import phone from "../images/phone-adornment.svg"
-import email from "../images/email-adornment.svg"
+import Email from "../images/EmailAdornment"
 import send from "../images/send.svg"
 
 import Layout from "../components/ui/Layout"
@@ -138,12 +138,8 @@ const ContactPage = () => {
               </Grid>
             </Grid>
             <Grid item container alignItems="center">
-              <Grid item>
-                <img
-                  className={classes.contactEmailIcon}
-                  src={email}
-                  alt="email"
-                />
+              <Grid item classes={{ root: classes.contactEmailIcon }}>
+                <Email color="#fff" />
               </Grid>
               <Grid item>
                 <Typography
