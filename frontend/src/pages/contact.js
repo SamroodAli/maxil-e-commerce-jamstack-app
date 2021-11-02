@@ -91,6 +91,14 @@ const useStyles = makeStyles(theme => ({
   multilineContainer: {
     marginTop: "1rem",
   },
+  multiline: {
+    border: "2px solid #fff",
+    borderRadius: 10,
+    padding: "1rem",
+  },
+  multilineError: {
+    border: `2px solid ${theme.palette.error.main}`,
+  },
   emailAdornment: {
     height: 17,
     width: 22,
@@ -107,11 +115,6 @@ const useStyles = makeStyles(theme => ({
       },
     ".MuiInput-underline:after": {
       borderBottom: `2px solid ${theme.palette.secondary.main}`,
-    },
-    ".MuiInput-multiline": {
-      border: "2px solid white",
-      borderRadius: 10,
-      padding: "1rem",
     },
   },
 }))
@@ -272,7 +275,11 @@ const ContactPage = () => {
                     }
                     InputProps={{
                       disableUnderline: true,
-                      classes: { input: classes.input },
+                      classes: {
+                        input: classes.input,
+                        multiline: classes.multiline,
+                        error: classes.multilineError,
+                      },
                     }}
                   />
                 </Grid>
