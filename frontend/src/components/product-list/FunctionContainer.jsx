@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import IconButton from "@material-ui/core/IconButton"
+import Sort from "./Sort"
 
 import filter from "../../images/filter.svg"
 import sort from "../../images/sort.svg"
@@ -36,13 +37,16 @@ const FunctionContainer = () => {
           >
             {items.map(item => (
               <Grid item key={item.alt}>
-                <IconButton>
+                <IconButton onClick={() => setOptions(item.alt)}>
                   <img src={item.icon} alt={item.alt} />
                 </IconButton>
               </Grid>
             ))}
           </Grid>
         )
+      }
+      case "sort": {
+        return <Sort setOptions={setOptions} />
       }
       default: {
         return null
