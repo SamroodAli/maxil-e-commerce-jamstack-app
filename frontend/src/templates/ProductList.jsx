@@ -9,8 +9,11 @@ const ProductList = ({ pageContext: { filterOptions, name, description } }) => {
   return (
     <Layout>
       <Grid container direction="column" alignItems="center">
-        <DynamicToolbar filterOptions={filterOptions} />
-        <DescriptionContainer name={name} description={description} />
+        <DynamicToolbar
+          filterOptions={filterOptions}
+          name={name}
+          description={description}
+        />
       </Grid>
     </Layout>
   )
