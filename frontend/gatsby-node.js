@@ -29,6 +29,20 @@ exports.createPages = async ({ graphql, actions }) => {
               strapiId
               name
               description
+              filterOptions {
+                Color {
+                  checked
+                  label
+                }
+                Size {
+                  checked
+                  label
+                }
+                Style {
+                  checked
+                  label
+                }
+              }
             }
           }
         }
