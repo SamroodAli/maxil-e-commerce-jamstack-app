@@ -36,6 +36,10 @@ exports.createPages = async ({ graphql, action }) => {
     `
   )
 
+  if (results.errors) {
+    throw results.errors
+  }
+
   const products = results.data.products.edges
   const categories = results.data.categories.edges
 
