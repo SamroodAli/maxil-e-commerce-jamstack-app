@@ -1,7 +1,7 @@
 import React from "react"
 
-const ProductDetail = ({ data }) => {
-  return <div>{data.name}</div>
+const ProductDetail = ({ pageContext }) => {
+  return <div>{pageContext.name}</div>
 }
 
 export default ProductDetail

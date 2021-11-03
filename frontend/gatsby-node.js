@@ -6,8 +6,8 @@
 
 // You can delete this file if you're not using it
 
-exports.createPages = async ({ graphql, action }) => {
-  const { createPage } = action
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
 
   const results = await graphql(
     `
@@ -41,9 +41,15 @@ exports.createPages = async ({ graphql, action }) => {
   }
 
   const products = results.data.products.edges
+  console.log(products)
   const categories = results.data.categories.edges
 
   products.forEach(product => {
+    console.log(
+      `/${product.node.category.name.toLowerCase()}/${encodeURIComponent(
+        product.node.name.split(" ")[0]
+      )}`
+    )
     createPage({
       path: `/${product.node.category.name.toLowerCase()}/${encodeURIComponent(
         product.node.name.split(" ")[0]
