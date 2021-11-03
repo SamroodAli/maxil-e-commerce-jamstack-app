@@ -1,7 +1,13 @@
 import React from "react"
 
+import Layout from "../components/ui/Layout"
+
 const ProductList = ({ pageContext }) => {
-  return <div>{pageContext.name}</div>
+  return (
+    <Layout>
+      <div>{pageContext.name}</div>
+    </Layout>
+  )
 }
 
 export default ProductList

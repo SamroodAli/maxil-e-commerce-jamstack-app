@@ -45,15 +45,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const categories = results.data.categories.edges
 
   products.forEach(product => {
-    console.log(
-      `/${product.node.category.name.toLowerCase()}/${encodeURIComponent(
-        product.node.name.split(" ")[0]
-      )}`
-    )
     createPage({
-      path: `/${product.node.category.name.toLowerCase()}/${encodeURIComponent(
+      path: `/${product.node.category.name.toLowerCase()}/${
         product.node.name.split(" ")[0]
-      )}`,
+      }`,
       component: require.resolve("./src/templates/ProductDetail.jsx"),
       context: {
         name: product.node.name,
