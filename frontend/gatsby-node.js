@@ -41,7 +41,6 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const products = results.data.products.edges
-  console.log(products)
   const categories = results.data.categories.edges
 
   products.forEach(product => {
