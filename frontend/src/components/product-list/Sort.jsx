@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Sort = ({ setOptions }) => {
+const Sort = ({ setOption }) => {
   const classes = useStyles()
 
   const sortOptions = [
@@ -32,12 +32,10 @@ const Sort = ({ setOptions }) => {
     { label: "REVIEWS" },
   ]
 
-  // A-Z, Z-A, NEWEST, OLDEST, PRICE ↑, PRICE ↓, REVIEWS
-
   return (
     <Grid item container justifyContent="space-between" alignItems="center">
       <Grid item>
-        <IconButton onClick={() => setOptions(null)}>
+        <IconButton onClick={() => setOption(null)}>
           <img src={sort} alt="sort" />
         </IconButton>
       </Grid>
@@ -54,7 +52,7 @@ const Sort = ({ setOptions }) => {
         </Grid>
       </Grid>
       <Grid item>
-        <IconButton onClick={() => setOptions(null)}>
+        <IconButton onClick={() => setOption(null)}>
           <img src={close} alt="close" />
         </IconButton>
       </Grid>

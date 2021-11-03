@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import IconButton from "@material-ui/core/IconButton"
 import Sort from "./Sort"
+import Filter from "./Filter"
 
 import filter from "../../images/filter.svg"
 import sort from "../../images/sort.svg"
@@ -16,9 +17,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const FunctionContainer = () => {
+const FunctionContainer = ({ filterOptions }) => {
   const classes = useStyles()
-  const [options, setOptions] = useState(null)
+  const [options, setOption] = useState(null)
 
   const content = () => {
     switch (options) {
@@ -37,7 +38,7 @@ const FunctionContainer = () => {
           >
             {items.map(item => (
               <Grid item key={item.alt}>
-                <IconButton onClick={() => setOptions(item.alt)}>
+                <IconButton onClick={() => setOption(item.alt)}>
                   <img src={item.icon} alt={item.alt} />
                 </IconButton>
               </Grid>
@@ -46,8 +47,10 @@ const FunctionContainer = () => {
         )
       }
       case "sort": {
-        return <Sort setOptions={setOptions} />
+        return <Sort setOption={setOption} />
       }
+      case "filter":
+        return <Filter setOption={setOption} filterOptions={filterOptions} />
       default: {
         return null
       }

@@ -67,7 +67,6 @@ exports.createPages = async ({ graphql, actions }) => {
         name: product.node.name,
         id: product.node.strapiId,
         category: product.node.category.name,
-        filterOptions: category.node.filterOptions,
       },
     })
   })
@@ -80,6 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
         name: category.node.name,
         description: category.node.description,
         id: category.node.strapiId,
+        filterOptions: category.node.filterOptions,
       },
     })
   })
