@@ -4,13 +4,15 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/ui/Layout"
 import DynamicToolbar from "../components/product-list/DynamicToolbar"
-import DescriptionContainer from "../components/product-list/DescriptionContainer"
+import ListOfProducts from "../components/product-list/ListOfProducts"
 
 const ProductList = ({
   pageContext: { filterOptions, name, description },
-  data,
+  data: {
+    allProducts: { products },
+  },
 }) => {
-  console.log(data)
+  console.log(products)
   return (
     <Layout>
       <Grid container direction="column" alignItems="center">
@@ -19,6 +21,7 @@ const ProductList = ({
           name={name}
           description={description}
         />
+        <ListOfProducts products={products} />/
       </Grid>
     </Layout>
   )
@@ -26,8 +29,8 @@ const ProductList = ({
 
 export const query = graphql`
   query GetCategoryProducts($id: String!) {
-    allStrapiProducts(filter: { category: { id: { eq: $id } } }) {
-      edges {
+    allProducts: allStrapiProducts(filter: { category: { id: { eq: $id } } }) {
+      products: edges {
         node {
           strapiId
           name
