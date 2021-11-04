@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import QuickView from "./QuickView"
-import Button from "@material-ui/core/Button"
+import ButtonBase from "@material-ui/core/ButtonBase"
 import frame from "../../images/product-frame-grid.svg"
 
 const useStyles = makeStyles(theme => ({
@@ -40,14 +40,13 @@ const ProductFrameGrid = ({ product, variant }) => {
   const productName = product.node.name.split(" ")[0]
   return (
     <Grid item>
-      <Grid container direction="column">
-        <Grid
-          item
-          classes={{ root: classes.frame }}
-          component={Button}
-          disableRipple
-          onClick={() => setOpen(true)}
-        >
+      <Grid
+        container
+        direction="column"
+        component={ButtonBase}
+        onClick={() => setOpen(true)}
+      >
+        <Grid item classes={{ root: classes.frame }}>
           <img
             className={classes.product}
             src={imageURL}

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
@@ -67,6 +67,7 @@ const useStyles = makeStyles(theme => ({
 
 const QuickView = ({ open, setOpen, url, name, price, product }) => {
   const classes = useStyles()
+  const [selectedSize, setSelectedSize] = useState(null)
 
   const sizes = product.node.variants.map(variant => variant.size)
 
@@ -128,7 +129,11 @@ const QuickView = ({ open, setOpen, url, name, price, product }) => {
             </Grid>
             <Grid item>
               <Grid container direction="column">
-                <Sizes sizes={sizes} />
+                <Sizes
+                  sizes={sizes}
+                  selectedSize={selectedSize}
+                  setSelectedSize={setSelectedSize}
+                />
               </Grid>
             </Grid>
           </Grid>

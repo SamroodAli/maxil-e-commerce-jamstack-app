@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Sizes = ({ sizes }) => {
+const Sizes = ({ sizes, selectedSize, setSelectedSize }) => {
   const classes = useStyles()
 
   const possibleSizes = ["S", "M", "L"]
@@ -31,7 +31,10 @@ const Sizes = ({ sizes }) => {
     <Grid item container justifyContent="space-between">
       {actualSizes.map(size => (
         <Grid item key={size}>
-          <Button classes={{ root: classes.button }}>
+          <Button
+            classes={{ root: classes.button }}
+            onClick={() => setSelectedSize(size)}
+          >
             <Typography variant="h3" classes={{ root: classes.size }}>
               {size}
             </Typography>
