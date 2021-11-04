@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({}))
 
-const Template = ({ product, variant }) => {
+const Template = () => {
   const classes = useStyles()
   return null
 }

@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button"
 import DialogContent from "@material-ui/core/DialogContent"
 import Rating from "../home/Rating"
 import Chip from "@material-ui/core/Chip"
+import Sizes from "./Sizes"
 
 import frame from "../../images/selected-frame.svg"
 import explore from "../../images/explore.svg"
@@ -64,8 +65,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const QuickView = ({ open, setOpen, url, name, price }) => {
+const QuickView = ({ open, setOpen, url, name, price, product }) => {
   const classes = useStyles()
+
+  const sizes = product.node.variants.map(variant => variant.size)
+
   return (
     <Dialog
       classes={{ paper: classes.dialog }}
@@ -116,6 +120,11 @@ const QuickView = ({ open, setOpen, url, name, price }) => {
             </Grid>
             <Grid item classes={{ root: classes.chipContainer }}>
               <Chip label={`$${price}`} classes={{ root: classes.chipRoot }} />
+            </Grid>
+            <Grid item>
+              <Grid container direction="column">
+                <Sizes sizes={sizes} />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

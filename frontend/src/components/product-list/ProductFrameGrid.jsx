@@ -67,6 +67,7 @@ const ProductFrameGrid = ({ product, variant }) => {
         url={imageURL}
         name={productName}
         price={variant.price}
+        product={product}
       />
     </Grid>
   )
