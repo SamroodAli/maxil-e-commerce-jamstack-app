@@ -2,6 +2,11 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import makeStyles from "@material-ui/core/styles/makeStyles"
+import ButtonGroup from "@material-ui/core/ButtonGroup"
+import Button from "@material-ui/core/Button"
+
+import ListIcon from "../../images/List"
+import GridIcon from "../../images/Grid"
 
 import background from "../../images/toolbar-background.svg"
 
@@ -22,6 +27,11 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
+  },
+  button: {
+    border: `2px solid ${theme.palette.primary.main}`,
+    borderRadius: 25,
+    borderRightColor: `${theme.palette.primary.main} !important`,
   },
 }))
 
@@ -45,6 +55,16 @@ const DescriptionContainer = ({ name, description }) => {
         >
           {description}
         </Typography>
+      </Grid>
+      <Grid item>
+        <ButtonGroup>
+          <Button classes={{ outlined: classes.button }}>
+            <ListIcon />
+          </Button>
+          <Button classes={{ outlined: classes.button }}>
+            <GridIcon />
+          </Button>
+        </ButtonGroup>
       </Grid>
     </Grid>
   )
