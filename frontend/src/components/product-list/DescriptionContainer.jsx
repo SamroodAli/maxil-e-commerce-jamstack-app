@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
+    position: "relative",
   },
   button: {
     border: `2px solid ${theme.palette.primary.main}`,
@@ -44,6 +45,13 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: theme.palette.primary.light,
     },
+  },
+  buttonGroup: {
+    position: "absolute",
+    right: 0,
+    bottom: 0,
+    marginRight: "3rem",
+    bottom: "3rem",
   },
 }))
 
@@ -70,7 +78,7 @@ const DescriptionContainer = ({ name, description }) => {
           {description}
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item classes={{ root: classes.buttonGroup }}>
         <ButtonGroup>
           <Button
             onClick={() => setLayout("list")}
