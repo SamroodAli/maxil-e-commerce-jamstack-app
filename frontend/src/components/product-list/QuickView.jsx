@@ -12,14 +12,39 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: `url(${frame})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
+    height: "60.4rem",
+    width: "73.5rem",
+    padding: "0 !important",
+  },
+  dialog: {
+    maxWidth: "100%",
+  },
+  productImage: {
+    height: "40rem",
+    width: "40rem",
+    marginTop: "5rem",
   },
 }))
 
-const QuickView = ({ open, setOpen }) => {
+const QuickView = ({ open, setOpen, url }) => {
   const classes = useStyles()
   return (
-    <Dialog open={open} onClose={() => setOpen(false)}>
-      <DialogContent classes={{ root: classes.selected }}></DialogContent>
+    <Dialog
+      classes={{ paper: classes.dialog }}
+      open={open}
+      onClose={() => setOpen(false)}
+    >
+      <DialogContent classes={{ root: classes.selected }}>
+        <Grid container direction="column" alignItems="center">
+          <Grid item>
+            <img
+              src={url}
+              alt="product image"
+              className={classes.productImage}
+            />
+          </Grid>
+        </Grid>
+      </DialogContent>
     </Dialog>
   )
 }

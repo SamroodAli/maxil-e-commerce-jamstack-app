@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 const ProductFrameGrid = ({ product, variant }) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
+  const imageURL = process.env.GATSBY_STRAPI_API_URL + variant.images[0].url
   return (
     <Grid item>
       <Grid container direction="column">
@@ -48,7 +49,7 @@ const ProductFrameGrid = ({ product, variant }) => {
         >
           <img
             className={classes.product}
-            src={process.env.GATSBY_STRAPI_API_URL + variant.images[0].url}
+            src={imageURL}
             alt={product.node.name}
           />
         </Grid>
@@ -59,7 +60,7 @@ const ProductFrameGrid = ({ product, variant }) => {
           </Typography>
         </Grid>
       </Grid>
-      <QuickView open={open} setOpen={setOpen} />
+      <QuickView open={open} setOpen={setOpen} url={imageURL} />
     </Grid>
   )
 }
