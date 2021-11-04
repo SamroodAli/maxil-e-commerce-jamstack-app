@@ -8,16 +8,30 @@ const useStyles = makeStyles(theme => ({
   size: {
     color: "#fff",
   },
+  button: {
+    border: "3px solid #fff",
+    borderRadius: 50,
+    height: "3rem",
+    width: "3rem",
+    minWidth: 0,
+  },
 }))
 
 const Sizes = ({ sizes }) => {
   const classes = useStyles()
 
+  const possibleSizes = ["S", "M", "L"]
+  let actualSizes = []
+
+  if (possibleSizes.every(size => sizes.includes(size))) {
+    actualSizes = possibleSizes
+  }
+
   return (
     <Grid item container justifyContent="space-between">
-      {sizes.map(size => (
-        <Grid item>
-          <Button>
+      {actualSizes.map(size => (
+        <Grid item key={size}>
+          <Button classes={{ root: classes.button }}>
             <Typography variant="h3" classes={{ root: classes.size }}>
               {size}
             </Typography>

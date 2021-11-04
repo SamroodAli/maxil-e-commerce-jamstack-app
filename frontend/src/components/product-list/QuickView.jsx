@@ -85,7 +85,12 @@ const QuickView = ({ open, setOpen, url, name, price, product }) => {
               className={classes.productImage}
             />
           </Grid>
-          <Grid item container classes={{ root: classes.toolbar }}>
+          <Grid
+            item
+            container
+            justifyContent="space-between"
+            classes={{ root: classes.toolbar }}
+          >
             <Grid item>
               <Grid
                 item
