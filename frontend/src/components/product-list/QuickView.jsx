@@ -55,6 +55,13 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     padding: "0.5rem 1rem",
   },
+  chipRoot: {
+    transform: "scale(1.5)",
+  },
+  chipContainer: {
+    display: "flex",
+    alignItems: "center",
+  },
 }))
 
 const QuickView = ({ open, setOpen, url, name, price }) => {
@@ -107,8 +114,8 @@ const QuickView = ({ open, setOpen, url, name, price }) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item>
-              <Chip label={price} />
+            <Grid item classes={{ root: classes.chipContainer }}>
+              <Chip label={`$${price}`} classes={{ root: classes.chipRoot }} />
             </Grid>
           </Grid>
         </Grid>
