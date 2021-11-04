@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import makeStyles from "@material-ui/core/styles/makeStyles"
 import ButtonGroup from "@material-ui/core/ButtonGroup"
 import Button from "@material-ui/core/Button"
+import clsx from "clsx"
 
 import ListIcon from "../../images/List"
 import GridIcon from "../../images/Grid"
@@ -32,11 +33,24 @@ const useStyles = makeStyles(theme => ({
     border: `2px solid ${theme.palette.primary.main}`,
     borderRadius: 25,
     borderRightColor: `${theme.palette.primary.main} !important`,
+    backgroundColor: "#fff",
+    padding: "0.5rem 1.5rem",
+    "&:hover": {
+      backgroundColor: "#fff",
+    },
+  },
+  selected: {
+    backgroundColor: theme.palette.primary.main,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.light,
+    },
   },
 }))
 
 const DescriptionContainer = ({ name, description }) => {
   const classes = useStyles()
+  const [layout, setLayout] = useState("grid")
+
   return (
     <Grid
       item
@@ -58,11 +72,25 @@ const DescriptionContainer = ({ name, description }) => {
       </Grid>
       <Grid item>
         <ButtonGroup>
-          <Button classes={{ outlined: classes.button }}>
-            <ListIcon />
+          <Button
+            onClick={() => setLayout("list")}
+            classes={{
+              outlined: clsx(classes.button, {
+                [classes.selected]: layout === "list",
+              }),
+            }}
+          >
+            <ListIcon color={layout == "list" ? "#fff" : undefined} />
           </Button>
-          <Button classes={{ outlined: classes.button }}>
-            <GridIcon />
+          <Button
+            onClick={() => setLayout("grid")}
+            classes={{
+              outlined: clsx(classes.button, {
+                [classes.selected]: layout === "grid",
+              }),
+            }}
+          >
+            <GridIcon color={layout == "grid" ? "#fff" : undefined} />
           </Button>
         </ButtonGroup>
       </Grid>
