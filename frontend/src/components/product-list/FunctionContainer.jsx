@@ -14,15 +14,15 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     minHeight: "6rem",
     height: "auto",
-    borderRadius: "10px 10px 0 0",
+    borderRadius: ({ option }) => (option === null ? "10px 10px 0 0" : "10px"),
   },
 }))
 
-const FunctionContainer = ({ filterOptions, options, setOptions }) => {
-  const classes = useStyles()
+const FunctionContainer = ({ filterOptions, option, setOption }) => {
+  const classes = useStyles({ option })
 
   const content = () => {
-    switch (options) {
+    switch (option) {
       case "sort": {
         return <Sort setOption={setOption} />
       }
