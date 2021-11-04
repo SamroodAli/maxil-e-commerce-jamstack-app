@@ -37,6 +37,7 @@ const ProductFrameGrid = ({ product, variant }) => {
   const classes = useStyles()
   const [open, setOpen] = useState(false)
   const imageURL = process.env.GATSBY_STRAPI_API_URL + variant.images[0].url
+  const productName = product.node.name.split(" ")[0]
   return (
     <Grid item>
       <Grid container direction="column">
@@ -56,11 +57,16 @@ const ProductFrameGrid = ({ product, variant }) => {
         <Grid item>
           <Typography variant="h5" classes={{ root: classes.title }}>
             {/* products.node.name = i++ - hoodie */}
-            {product.node.name.split(" ")[0]}
+            {productName}
           </Typography>
         </Grid>
       </Grid>
-      <QuickView open={open} setOpen={setOpen} url={imageURL} />
+      <QuickView
+        open={open}
+        setOpen={setOpen}
+        url={imageURL}
+        name={productName}
+      />
     </Grid>
   )
 }
