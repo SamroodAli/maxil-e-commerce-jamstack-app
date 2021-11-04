@@ -18,9 +18,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const FunctionContainer = ({ filterOptions }) => {
+const FunctionContainer = ({ filterOptions, options, setOptions }) => {
   const classes = useStyles()
-  const [options, setOption] = useState(null)
 
   const content = () => {
     switch (options) {
