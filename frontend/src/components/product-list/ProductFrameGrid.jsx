@@ -21,6 +21,15 @@ const useStyles = makeStyles(theme => ({
     height: "20rem",
     width: "20rem",
   },
+  title: {
+    backgroundColor: theme.palette.primary.main,
+    height: "5rem",
+    width: "25rem",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "-0.1rem",
+  },
 }))
 
 const ProductFrameGrid = ({ product, variant }) => {
@@ -34,6 +43,12 @@ const ProductFrameGrid = ({ product, variant }) => {
             src={process.env.GATSBY_STRAPI_API_URL + variant.images[0].url}
             alt={product.node.name}
           />
+        </Grid>
+        <Grid item>
+          <Typography variant="h5" classes={{ root: classes.title }}>
+            {/* products.node.name = i++ - hoodie */}
+            {product.node.name.split(" ")[0]}
+          </Typography>
         </Grid>
       </Grid>
     </Grid>
