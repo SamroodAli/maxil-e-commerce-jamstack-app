@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     right: 0,
     bottom: 0,
     marginRight: "3rem",
-    bottom: "3rem",
+    marginBottom: "3rem",
   },
 }))
 
@@ -88,7 +88,7 @@ const DescriptionContainer = ({ name, description }) => {
               }),
             }}
           >
-            <ListIcon color={layout == "list" ? "#fff" : undefined} />
+            <ListIcon color={layout === "list" ? "#fff" : undefined} />
           </Button>
           <Button
             onClick={() => setLayout("grid")}
@@ -98,7 +98,7 @@ const DescriptionContainer = ({ name, description }) => {
               }),
             }}
           >
-            <GridIcon color={layout == "grid" ? "#fff" : undefined} />
+            <GridIcon color={layout === "grid" ? "#fff" : undefined} />
           </Button>
         </ButtonGroup>
       </Grid>
