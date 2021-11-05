@@ -69,6 +69,7 @@ const useStyles = makeStyles(theme => ({
 const QuickView = ({ open, setOpen, url, name, price, product }) => {
   const classes = useStyles()
   const [selectedSize, setSelectedSize] = useState(null)
+  const [selectedColor, setSelectedColor] = useState(null)
 
   let sizes = []
   let colors = []
@@ -143,7 +144,11 @@ const QuickView = ({ open, setOpen, url, name, price, product }) => {
                   selectedSize={selectedSize}
                   setSelectedSize={setSelectedSize}
                 />
-                <Swatches colors={colors} />
+                <Swatches
+                  colors={colors}
+                  selectedColor={selectedColor}
+                  setSelectedColor={setSelectedColor}
+                />
               </Grid>
             </Grid>
           </Grid>

@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import Button from "@material-ui/core/Button"
+import clsx from "clsx"
 
 const useStyles = makeStyles(theme => ({
   swatch: {
@@ -18,17 +19,25 @@ const useStyles = makeStyles(theme => ({
       marginLeft: "-0.5rem",
     },
   },
+  selected: {
+    border: `5px solid ${theme.palette.secondary.main}`,
+  },
 }))
 
-const Swatches = ({ colors }) => {
+const Swatches = ({ colors, selectedColor, setSelectedColor }) => {
   const classes = useStyles()
   return (
     <Grid item container>
       {colors.sort().map(color => (
         <Grid item classes={{ root: classes.swatchesContainer }}>
           <Button
+            onClick={() => setSelectedColor(color)}
             style={{ backgroundColor: color }}
-            classes={{ root: classes.swatch }}
+            classes={{
+              root: clsx(classes.swatch, {
+                [classes.selected]: selectedColor === color,
+              }),
+            }}
           />
         </Grid>
       ))}
