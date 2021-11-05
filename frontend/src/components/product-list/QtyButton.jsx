@@ -66,7 +66,10 @@ const QtyButton = () => {
           </Typography>
         </Button>
         <ButtonGroup orientation="vertical">
-          <Button classes={{ root: classes.editButtons }}>
+          <Button
+            classes={{ root: classes.editButtons }}
+            onClick={() => setQty(qty + 1)}
+          >
             <Typography
               variant="h3"
               classes={{ root: clsx(classes.qtyText, classes.minus) }}
@@ -75,6 +78,7 @@ const QtyButton = () => {
             </Typography>
           </Button>
           <Button
+            onClick={() => setQty(qty - 1 < 0 ? 0 : qty - 1)}
             classes={{ root: clsx(classes.editButtons, classes.minusButton) }}
           >
             <Typography variant="h3" classes={{ root: classes.qtyText }}>
