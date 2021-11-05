@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 
 import ProductFrameGrid from "./ProductFrameGrid"
+import ProductFrameList from "./ProductFrameList"
 
 const useStyles = makeStyles(theme => ({
   productContainer: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ListOfProducts = ({ products }) => {
+const ListOfProducts = ({ products, layout }) => {
   const classes = useStyles()
   return (
     <Grid item container classes={{ root: classes.productContainer }}>

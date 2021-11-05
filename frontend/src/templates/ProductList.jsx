@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Grid from "@material-ui/core/Grid"
 import { graphql } from "gatsby"
 
@@ -12,7 +12,7 @@ const ProductList = ({
     allProducts: { products },
   },
 }) => {
-  console.log(products)
+  const [layout, setLayout] = useState("grid")
   return (
     <Layout>
       <Grid container direction="column" alignItems="center">
@@ -20,8 +20,10 @@ const ProductList = ({
           filterOptions={filterOptions}
           name={name}
           description={description}
+          layout={layout}
+          setLayout={layout}
         />
-        <ListOfProducts products={products} />/
+        <ListOfProducts products={products} layout={layout} />/
       </Grid>
     </Layout>
   )
