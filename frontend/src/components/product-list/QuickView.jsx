@@ -8,6 +8,7 @@ import DialogContent from "@material-ui/core/DialogContent"
 import Rating from "../home/Rating"
 import Chip from "@material-ui/core/Chip"
 import Sizes from "./Sizes"
+import Swatches from "./Swatches"
 
 import frame from "../../images/selected-frame.svg"
 import explore from "../../images/explore.svg"
@@ -33,6 +34,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.primary.main,
     height: "13rem",
     marginTop: "2rem",
+    padding: "0.5rem 1rem",
   },
   stock: {
     color: "#fff",
@@ -54,7 +56,6 @@ const useStyles = makeStyles(theme => ({
   },
   infoContainer: {
     height: "100%",
-    padding: "0.5rem 1rem",
   },
   chipRoot: {
     transform: "scale(1.5)",
@@ -69,7 +70,15 @@ const QuickView = ({ open, setOpen, url, name, price, product }) => {
   const classes = useStyles()
   const [selectedSize, setSelectedSize] = useState(null)
 
-  const sizes = product.node.variants.map(variant => variant.size)
+  let sizes = []
+  let colors = []
+
+  product.node.variants.map(variant => {
+    sizes.push(variant.size)
+    if (!colors.includes(variant.color)) {
+      colors.push(variant.color)
+    }
+  })
 
   return (
     <Dialog
@@ -134,6 +143,7 @@ const QuickView = ({ open, setOpen, url, name, price, product }) => {
                   selectedSize={selectedSize}
                   setSelectedSize={setSelectedSize}
                 />
+                <Swatches colors={colors} />
               </Grid>
             </Grid>
           </Grid>
