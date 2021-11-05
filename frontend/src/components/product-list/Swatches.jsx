@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   selected: {
-    border: `5px solid ${theme.palette.secondary.main}`,
+    borderColor: theme.palette.secondary.main,
   },
 }))
 
